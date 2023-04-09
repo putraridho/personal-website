@@ -1,0 +1,58 @@
+@import '@/styles/function'
+
+.header
+  padding:
+    top: toRem(20px)
+    bottom: toRem(20px)
+
+.nav
+  display: flex
+  align-items: center
+  justify-content: flex-end
+  gap: toRem(32px)
+
+.link
+  position: relative
+  font:
+    size: toRem(16px)
+    weight: 700
+  line-height: 1.5
+  cursor: pointer
+
+  .active
+    position: absolute
+    transform: translate(50%, -50%)
+
+    &::before
+      content: ''
+      position: absolute
+      top: 50%
+      left: 50%
+      height: toRem(16px)
+      width: toRem(16px)
+      background-color: var(--accent-100)
+      border-radius: 100%
+      transform: translate(-50%, -50%) scale(0)
+      animation: pulse 1.5s ease infinite
+
+    &::after
+      content: ''
+      position: relative
+      display: block
+      width: toRem(8px)
+      height: toRem(8px)
+      background: var(--accent-500)
+      border-radius: 100%
+
+@keyframes pulse
+  0%
+    opacity: 1
+    transform: translate(-50%, -50%) scale(0)
+
+  50%
+    opacity: 1
+
+  100%
+    opacity: 0
+    transform: translate(-50%, -50%) scale(1)
+    

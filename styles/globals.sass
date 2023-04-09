@@ -1,0 +1,46 @@
+:root
+  $accent-colors: (100: #F7D8D0, 200: #F7C6B9, 300: #F7B4A4, 400: #F79C87, 500: #F7826D)
+  $neutral-colors: (100: #F0F0F0, 200: #BFBFBF, 300: #7F7F7F, 400: #4C4C4C, 500: #2E2E2E)
+
+  @each $value, $hex in $accent-colors
+    --accent-#{$value}: #{$hex}
+
+  @each $value, $hex in $neutral-colors
+    --neutral-#{$value}: #{$hex}
+
+  --white: #FFFFFF
+
+*
+  box-sizing: border-box
+
+body
+  margin: 0
+  font-size: 16px
+  line-height: 1.5
+  color: var(--neutral-500)
+  background-color: var(--white)
+  letter-spacing: 0.05em
+
+h1, h2, h3, h4, h5, h6, p
+  margin: 0
+
+a
+  color: inherit
+  text-decoration: none
+
+ul
+  margin: 0
+  padding: 0
+  list-style: none
+
+li
+  margin: 0
+  padding: 0
+
+button
+  border: none
+  background: none
+  cursor: pointer
+
+  &:focus
+    outline: none
