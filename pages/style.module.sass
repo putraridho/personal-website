@@ -1,0 +1,34 @@
+@import styles/function
+  
+.hero
+  display: grid
+  grid-template-columns: 1fr 1fr
+  gap: toRem(32px)
+  align-items: center
+  height: 100vh
+
+.heroText
+  display: flex
+  flex-direction: column
+  justify-content: center
+  gap: toRem(12px)
+
+.heroTitle
+  font-size: toRem(48px)
+  line-height: 58 / 48 * 1
+
+  .big
+    display: block
+    font-size: toRem(100px)
+    list-style: 121 / 100 * 1
+    color: var(--accent-500)
+    margin-top: toRem(12px)
+
+.heroSubtitle
+  line-height: 2
+  color: var(--grey-300)
+
+  .accent
+    color: var(--accent-500)
+    font-weight: 600
+
