@@ -1,0 +1,16 @@
+@import @/styles/function
+
+$shades: 100, 200, 300, 400, 500
+
+.button
+  padding: toRem(10px) toRem(16px)
+  border-radius: toRem(2px)
+  font:
+    size: toRem(12px)
+    weight: 700
+  line-height: 15 / 12 * 1
+
+@each $shade in $shades
+  .shade-#{$shade}
+    background-color: var(--accent-#{$shade})
+    color: var(--white)

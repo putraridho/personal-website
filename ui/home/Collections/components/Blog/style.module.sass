@@ -1,0 +1,39 @@
+@import @/styles/function
+  
+.row
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: toRem(16px)
+  width: 100%
+
+.heading
+  display: flex
+  gap: toRem(16px)
+  align-items: center
+  letter-spacing: 0
+
+  h2
+    font-size: toRem(16px)
+    line-height: 19 / 16 * 1
+
+.text
+  font-size: toRem(13px)
+  line-height: 27 / 13 * 1
+  color: var(--grey-300)
+  letter-spacing: 0
+
+.link
+  display: flex
+  align-items: center
+  font-size: toRem(13px)
+  line-height: 27 / 13 * 1
+  color: var(--accent-400)
+  letter-spacing: 0
+  gap: toRem(4px)
+  transition: .2s all ease
+  cursor: pointer
+
+  &:hover
+    gap: toRem(12px)
+

@@ -4,7 +4,7 @@ import type { AppProps } from "next/app";
 import { Inter } from "next/font/google";
 
 const inter = Inter({
-	weight: ["400", "600", "700"],
+	weight: ["300", "400", "600", "700"],
 	subsets: ["latin"],
 	fallback: ["sans-serif"],
 });
