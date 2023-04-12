@@ -1,0 +1,31 @@
+@import @/styles/function
+
+.float
+  position: fixed
+  display: flex
+  flex-direction: column
+  gap: toRem(8px)
+  right: toRem(8px)
+  top: 50%
+  transform: translateY(-50%)
+  padding: toRem(8px)
+  border-radius: toRem(6px)
+  background: var(--grey-100)
+  z-index: 99
+
+  &:hover
+    .color:not(:first-child)
+      margin-left: toRem(-3px)
+
+.colors
+  display: flex
+  cursor: pointer
+
+.color
+  height: toRem(10px)
+  width: toRem(10px)
+  border-radius: 100%
+  transition: all 0.2s ease
+
+  &:not(:first-child)
+    margin-left: toRem(-10px)
