@@ -1,10 +1,13 @@
 import type { AppProps } from "next/app";
+import dynamic from "next/dynamic";
 import { Inter } from "next/font/google";
 import { useState } from "react";
 
 import "@/styles/globals.sass";
 
 import { ColorSchemePicker, Header } from "@/components";
+
+const Toast = dynamic(() => import("@/components/Toast").then((mod) => mod.Toast), { ssr: false });
 
 const inter = Inter({
 	weight: ["300", "400", "600", "700"],
@@ -33,6 +36,7 @@ export default function App({ Component, pageProps }: AppProps) {
 			`}</style>
 			<Header />
 			<ColorSchemePicker onSelect={setSelected} />
+			<Toast />
 			<Component {...pageProps} />
 		</>
 	);

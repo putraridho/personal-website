@@ -4,6 +4,6 @@ interface CardProps {
 	children?: React.ReactNode;
 }
 
-export default function Card(props: CardProps): React.ReactElement {
+export function Card(props: CardProps): React.ReactElement {
 	return <div className={style.card} {...props}></div>;
 }

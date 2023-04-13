@@ -1,6 +1,6 @@
 import { RiArrowRightLine, RiMagicLine } from "react-icons/ri";
 
-import Card from "@/components/Card";
+import { Card } from "@/components";
 
 import style from "./style.module.sass";
 
