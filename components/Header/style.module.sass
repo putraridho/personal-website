@@ -50,6 +50,21 @@
       border-radius: 100%
       transition: all 0.2s ease
 
+.darkModeButton
+  display: flex
+  justify-content: center
+  align-items: center
+  padding: toRem(6px)
+  background-color: var(--white)
+  border-radius: toRem(8px)
+  border: 2px solid var(--grey-100)
+  transition: background .2s ease, border .2s ease
+
+  &:hover
+    background-color: var(--grey-500)
+    border-color: var(--grey-500)
+    color: var(--white)
+
 @keyframes pulse
   0%
     opacity: 0.5
