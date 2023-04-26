@@ -1,12 +1,13 @@
 @import ./function
 
-:root
-  $scheme-1-colors: (100: #F7B4A4, 200: #F7E4BE, 300: #B5D99C, 400: #74C7B8, 500: #A692B7)
-  $scheme-2-colors: (100: #F7D8D0, 200: #F7C6B9, 300: #F7B4A4, 400: #F79C87, 500: #F7826D)
-  $scheme-3-colors: (100: #C7E9E4, 200: #A0D8CC, 300: #7EC1B4, 400: #5CA99C, 500: #389283)
-  $scheme-4-colors: (100: #D5CBE1, 200: #BFB1D1, 300: #A692B7, 400: #8D749C, 500: #6C567F)
-  $neutral-colors: (100: #F0F0F0, 200: #BFBFBF, 300: #7F7F7F, 400: #4C4C4C, 500: #2E2E2E)
+$scheme-1-colors: (100: #F7B4A4, 200: #F7E4BE, 300: #B5D99C, 400: #74C7B8, 500: #A692B7)
+$scheme-2-colors: (100: #F7D8D0, 200: #F7C6B9, 300: #F7B4A4, 400: #F79C87, 500: #F7826D)
+$scheme-3-colors: (100: #C7E9E4, 200: #A0D8CC, 300: #7EC1B4, 400: #5CA99C, 500: #389283)
+$scheme-4-colors: (100: #D5CBE1, 200: #BFB1D1, 300: #A692B7, 400: #8D749C, 500: #6C567F)
+$neutral-colors: (0: #FFFFFF, 100: #F0F0F0, 200: #BFBFBF, 300: #7F7F7F, 400: #4C4C4C, 500: #2E2E2E)
+$white: #FFFFFF
 
+:root
   @each $value, $hex in $scheme-1-colors
     --scheme-1-#{$value}: #{$hex}
 
@@ -27,8 +28,12 @@
   @each $value, $hex in $neutral-colors
     --grey-#{$value}: #{$hex}
 
-  --white: #FFFFFF
+  --white: var(--grey-0)
   --shadow: 0px 4px 16px 0px rgba(150, 150, 150, 0.15)
+
+[data-theme='dark']
+  @each $value, $hex in $neutral-colors
+    --grey-#{500 - $value}: #{$hex}
 
 *
   box-sizing: border-box
@@ -67,3 +72,6 @@ button
 
   &:focus
     outline: none
+
+img, svg
+  vertical-align: bottom

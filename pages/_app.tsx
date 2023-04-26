@@ -1,13 +1,16 @@
+import { ThemeProvider, useTheme } from "next-themes";
 import type { AppProps } from "next/app";
 import dynamic from "next/dynamic";
 import { Inter } from "next/font/google";
 import { useState } from "react";
 
+import { Header } from "@/components";
+
 import "@/styles/globals.sass";
 
-import { ColorSchemePicker, Header } from "@/components";
-
-const Toast = dynamic(() => import("@/components/Toast").then((mod) => mod.Toast), { ssr: false });
+const ColorSchemePicker = dynamic(() => import("@/components").then((mod) => mod.ColorSchemePicker), { ssr: false });
+const DarkModeToggle = dynamic(() => import("@/components").then((mod) => mod.DarkModeToggle), { ssr: false });
+const Toast = dynamic(() => import("@/components").then((mod) => mod.Toast), { ssr: false });
 
 const inter = Inter({
 	weight: ["300", "400", "600", "700"],
@@ -16,28 +19,31 @@ const inter = Inter({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
-	const [selected, setSelected] = useState<number | null>(null);
+	const [colorScheme, setColorScheme] = useState<number | null>(null);
 
 	return (
-		<>
+		<ThemeProvider>
 			<style jsx global>{`
-				${selected
-					? `:root {
-						--accent-100: var(--scheme-${selected}-100); 
-						--accent-200: var(--scheme-${selected}-200); 
-						--accent-300: var(--scheme-${selected}-300); 
-						--accent-400: var(--scheme-${selected}-400); 
-						--accent-500: var(--scheme-${selected}-500); 
-					}`
-					: ""}
+				:root {
+					${colorScheme
+						? `
+							--accent-100: var(--scheme-${colorScheme}-100); 
+							--accent-200: var(--scheme-${colorScheme}-200); 
+							--accent-300: var(--scheme-${colorScheme}-300); 
+							--accent-400: var(--scheme-${colorScheme}-400); 
+							--accent-500: var(--scheme-${colorScheme}-500);
+						`
+						: ""}
+				}
 				body {
 					font-family: ${inter.style.fontFamily};
 				}
 			`}</style>
 			<Header />
-			<ColorSchemePicker onSelect={setSelected} />
+			<DarkModeToggle />
+			<ColorSchemePicker onSelect={setColorScheme} />
 			<Toast />
 			<Component {...pageProps} />
-		</>
+		</ThemeProvider>
 	);
 }

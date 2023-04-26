@@ -2,6 +2,8 @@ export * from "./Button";
 export * from "./Card";
 export * from "./ColorSchemePicker";
 export * from "./Container";
+export * from "./DarkModeToggle";
 export * from "./Header";
+export * from "./Logo";
 export * from "./Toast";
 export * from "./Tooltip";
