@@ -1,8 +1,14 @@
 @import styles/function
+@import styles/mixin
   
 .container
   max-width: toRem(1440px)
   margin: 0 auto
-  padding: 
-    left: toRem(64px)
-    right: toRem(64px)
+  padding:
+    left: toRem(32px)
+    right: toRem(32px)
+
+  +tablet
+    padding: 
+      left: toRem(64px)
+      right: toRem(64px)

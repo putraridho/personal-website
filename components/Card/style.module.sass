@@ -1,4 +1,5 @@
-@import @/styles/function
+@import styles/function
+@import styles/mixin
 
 .card
   display: flex
@@ -6,13 +7,13 @@
   align-items: flex-start
   justify-items: flex-start
   gap: toRem(16px)
-  padding: toRem(30px)
+  padding: toRem(16px)
   border-radius: toRem(6px)
   box-shadow: var(--shadow)
-  // outline-style: solid
-  // outline-width: toRem(2px)
-  // outline-color: transparent
   transition: .2s all ease
+
+  +tablet
+    padding: toRem(32px)
 
   &:hover
     box-shadow: inset 0 0 0 toRem(2px) var(--accent-300)

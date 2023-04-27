@@ -1,4 +1,5 @@
-@import @/styles/function
+@import styles/function
+@import styles/mixin
   
 .row
   display: flex
@@ -14,25 +15,37 @@
   letter-spacing: 0
 
   h2
-    font-size: toRem(16px)
-    line-height: 19 / 16 * 1
+    font-size: toRem(18px)
+    line-height: 22 / 18 * 1
+ 
+    +tablet
+      font-size: toRem(16px)
+      line-height: 19 / 16 * 1
 
 .text
-  font-size: toRem(13px)
-  line-height: 27 / 13 * 1
+  font-size: toRem(16px)
+  line-height: 32 / 16 * 1
   color: var(--grey-300)
   letter-spacing: 0
+
+  +tablet
+    font-size: toRem(13px)
+    line-height: 27 / 13 * 1
 
 .link
   display: flex
   align-items: center
-  font-size: toRem(13px)
-  line-height: 27 / 13 * 1
+  font-size: toRem(16px)
+  line-height: 32 / 16 * 1
   color: var(--accent-400)
   letter-spacing: 0
   gap: toRem(4px)
   transition: .2s all ease
   cursor: pointer
+
+  +tablet
+    font-size: toRem(13px)
+    line-height: 27 / 13 * 1
 
   &:hover
     gap: toRem(12px)

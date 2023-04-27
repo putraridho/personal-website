@@ -1,28 +1,47 @@
 @import styles/function
+@import styles/mixin
   
 .hero
   display: grid
-  grid-template-columns: 1fr 1fr
   gap: toRem(32px)
   align-items: center
   height: 100vh
+  grid-template-columns: 1fr
+  padding:
+    top: toRem(128px)
+    bottom: toRem(128px)
+
+  +desktop
+    grid-template-columns: 1fr 1fr
 
 .heroText
   display: flex
   flex-direction: column
   justify-content: center
-  gap: toRem(12px)
+  gap: toRem(18px)
+
+  +tablet
+    gap: toRem(12px)
 
 .heroTitle
-  font-size: toRem(48px)
-  line-height: 58 / 48 * 1
+  line-height: 34 / 28 * 1
+  font-size: toRem(28px)
+  
+  +tablet
+    line-height: 58 / 48 * 1
+    font-size: toRem(48px)
 
   .big
     display: block
-    font-size: toRem(100px)
-    line-height: 121 / 100 * 1
     color: var(--accent-500)
-    margin-top: toRem(12px)
+    margin-top: toRem(18px)
+    font-size: toRem(64px)
+    line-height: 77 / 64 * 1
+
+    +tablet
+      margin-top: toRem(12px)
+      font-size: toRem(100px)
+      line-height: 121 / 100 * 1
 
 .heroSubtitle
   line-height: 2

@@ -1,4 +1,5 @@
-@import @/styles/function
+@import styles/function
+@import styles/mixin
   
 .row
   display: flex
@@ -14,8 +15,12 @@
   letter-spacing: 0
 
   h2
-    font-size: toRem(16px)
-    line-height: 19 / 16 * 1
+    font-size: toRem(18px)
+    line-height: 22 / 18 * 1
+ 
+    +tablet
+      font-size: toRem(16px)
+      line-height: 19 / 16 * 1
 
 .socials
   display: flex

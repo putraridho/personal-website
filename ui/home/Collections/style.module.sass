@@ -1,14 +1,22 @@
 @import styles/function
+@import styles/mixin
 
 .collections
   display: flex
   width: 100%
   align-items: center
   height: 100vh
+  padding:
+    top: toRem(128px)
+    bottom: toRem(128px)
 
 .grid
   display: grid
   width: 100%
-  grid-template-columns: 1fr 1fr 1fr
   align-items: flex-start
-  gap: toRem(32px)
+  grid-template-columns: 1fr
+  gap: toRem(64px)
+
+  +desktop
+    gap: toRem(32px)
+    grid-template-columns: 1fr 1fr 1fr

@@ -1,4 +1,5 @@
-@import @/styles/function
+@import styles/function
+@import styles/mixin
   
 .row
   display: flex
@@ -14,13 +15,21 @@
   letter-spacing: 0
 
   h2
-    font-size: toRem(16px)
-    line-height: 19 / 16 * 1
+    font-size: toRem(18px)
+    line-height: 22 / 18 * 1
+ 
+    +tablet
+      font-size: toRem(16px)
+      line-height: 19 / 16 * 1
 
 .text
   max-width: toRem(244px)
-  font-size: toRem(13px)
-  line-height: 27 / 13 * 1
+  font-size: toRem(16px)
+  line-height: 32 / 16 * 1
   color: var(--grey-300)
   letter-spacing: 0
+
+  +tablet
+    font-size: toRem(13px)
+    line-height: 27 / 13 * 1
 

@@ -1,4 +1,5 @@
-@import @/styles/function
+@import styles/function
+@import styles/mixin
 
 $shades: 100, 200, 300, 400, 500
 
@@ -6,10 +7,14 @@ $shades: 100, 200, 300, 400, 500
   padding: toRem(10px) toRem(16px)
   border-radius: toRem(2px)
   font:
-    size: toRem(12px)
+    size: toRem(16px)
     weight: 700
-  line-height: 15 / 12 * 1
+  line-height: 19 / 16 * 1
   transition: all 0.2s ease
+
+  +tablet
+    font-size: toRem(12px)
+    line-height: 15 / 12 * 1
 
 @each $shade in $shades
   .shade-#{$shade}
