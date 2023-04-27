@@ -1,4 +1,5 @@
-import { ThemeProvider, useTheme } from "next-themes";
+import { Analytics } from "@vercel/analytics/react";
+import { ThemeProvider } from "next-themes";
 import type { AppProps } from "next/app";
 import dynamic from "next/dynamic";
 import { Inter } from "next/font/google";
@@ -44,6 +45,7 @@ export default function App({ Component, pageProps }: AppProps) {
 			<ColorSchemePicker onSelect={setColorScheme} />
 			<Toast />
 			<Component {...pageProps} />
+			<Analytics />
 		</ThemeProvider>
 	);
 }
