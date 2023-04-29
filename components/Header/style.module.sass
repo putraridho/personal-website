@@ -1,4 +1,5 @@
 @import styles/function
+@import styles/mixin
 
 .header
   position: fixed
@@ -6,8 +7,13 @@
   left: 0
   width: 100%
   padding:
-    top: toRem(20px)
-    bottom: toRem(20px)
+    top: toRem(16px)
+    bottom: toRem(16px)
+
+  +desktop
+    padding:
+      top: toRem(20px)
+      bottom: toRem(20px)
 
 .row
   display: flex
@@ -16,18 +22,39 @@
   gap: toRem(32px)
 
 .nav
-  display: flex
+  position: fixed
+  min-height: calc(100vh - #{58 / 16 * 1rem})
+  width: 100vw
+  top: toRem(58px)
+  left: toRem(0px)
+  background: var(--white)
+  padding: toRem(32px)
+  display: none
+  flex-direction: column
   align-items: center
-  justify-content: flex-end
-  gap: toRem(32px)
+  justify-content: center
+  gap: toRem(64px)
+
+  +desktop
+    position: static
+    top: auto
+    left: auto
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    gap: toRem(32px)
 
 .link
   position: relative
   font:
-    size: toRem(16px)
+    size: toRem(20px)
     weight: 700
-  line-height: 1.5
+  line-height: 1
   cursor: pointer
+
+  +desktop
+    font-size: toRem(16px)
+    line-height: 1.5
 
   .active
     position: absolute
@@ -55,6 +82,13 @@
       background: var(--accent-500)
       border-radius: 100%
       transition: all 0.2s ease
+
+.hamburger
+  display: block
+  margin-right: toRem(-24px)
+
+  +desktop
+    display: none
 
 @keyframes pulse
   0%

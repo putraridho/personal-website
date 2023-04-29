@@ -1,13 +1,10 @@
-import dynamic from "next/dynamic";
 import Link from "next/link";
+import { RiMenu4Line } from "react-icons/ri";
+
 import { Container } from "../Container";
 import { Logo } from "../Logo";
 
 import style from "./style.module.sass";
-
-const DarkModeToggle = dynamic(() => import("@/components/DarkModeToggle").then((mod) => mod.DarkModeToggle), {
-	ssr: false,
-});
 
 export function Header(): React.ReactElement {
 	return (
@@ -25,6 +22,9 @@ export function Header(): React.ReactElement {
 							</span>
 						))}
 					</nav>
+					<button type="button" className={style.hamburger}>
+						<RiMenu4Line size={24} />
+					</button>
 				</div>
 			</Container>
 		</header>
