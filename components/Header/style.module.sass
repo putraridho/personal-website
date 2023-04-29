@@ -22,6 +22,7 @@
   gap: toRem(32px)
 
 .nav
+  display: none
   position: fixed
   min-height: calc(100vh - #{58 / 16 * 1rem})
   width: 100vw
@@ -29,17 +30,24 @@
   left: toRem(0px)
   background: var(--white)
   padding: toRem(32px)
-  display: none
   flex-direction: column
   align-items: center
   justify-content: center
   gap: toRem(64px)
 
+  &.open
+    display: flex
+
   +desktop
+    display: flex
     position: static
+    min-height: auto
+    width: auto
     top: auto
     left: auto
-    display: flex
+    background: none
+    padding: toRem(0px)
+    flex-direction: row
     align-items: center
     justify-content: flex-end
     gap: toRem(32px)
@@ -86,6 +94,10 @@
 .hamburger
   display: block
   margin-right: toRem(-24px)
+
+  +tablet
+    margin-right: toRem(-56px)
+
 
   +desktop
     display: none
