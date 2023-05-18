@@ -1,7 +1,7 @@
+import { GetStaticProps } from "next";
+
 import { Container } from "@/components";
 import { Collections, Hero } from "@/ui/home";
-
-import style from "./style.module.sass";
 
 export default function Home() {
 	return (
@@ -13,3 +13,9 @@ export default function Home() {
 		</main>
 	);
 }
+
+export const getStaticProps: GetStaticProps<{}> = async () => {
+	return {
+		props: {},
+	};
+};
