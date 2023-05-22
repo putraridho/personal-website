@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -10,6 +11,8 @@ import { Container } from "../Container";
 import { Logo } from "../Logo";
 
 import style from "./style.module.sass";
+
+const Active = dynamic(() => import("./Active").then((mod) => mod.Active), { ssr: false });
 
 export function Header(): React.ReactElement {
 	const router = useRouter();
@@ -36,10 +39,10 @@ export function Header(): React.ReactElement {
 					</Link>
 					<nav className={classNames(style.nav, { [style.open]: isOpen })}>
 						{headerMenu.map(({ text, href }) => (
-							<Link key={text} href={href}>
+							<Link key={text} href={href} onClick={() => setIsOpen(false)}>
 								<span className={style.link}>
 									{text}
-									{router.asPath === href && <span className={style.active} />}
+									<Active active={router.asPath === href} />
 								</span>
 							</Link>
 						))}

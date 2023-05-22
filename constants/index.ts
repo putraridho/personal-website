@@ -19,3 +19,5 @@ export const headerMenu = [
 	{ text: "Blogs", href: "/blogs" },
 	{ text: "Contact", href: "#" },
 ];
+
+export const TZ = "Asia/Jakarta";

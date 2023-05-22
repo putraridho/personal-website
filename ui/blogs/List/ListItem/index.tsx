@@ -1,11 +1,17 @@
 import dayjs from "dayjs";
+import timezone from "dayjs/plugin/timezone";
+import utc from "dayjs/plugin/utc";
 import Link from "next/link";
 import { RiArrowRightLine } from "react-icons/ri";
 
 import { Badge, Card } from "@/components";
+import { TZ } from "@/constants";
 import { IBlog, ITag } from "@/types";
 
 import style from "./style.module.sass";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 interface ListItemProps {
 	item: IBlog;
@@ -16,7 +22,9 @@ export function ListItem({ item }: ListItemProps): React.ReactElement {
 		<Card>
 			<Title>{item.properties["Title"].title[0].plain_text}</Title>
 			<CreatedTime>
-				{`🗓️ ${dayjs(item.created_time).format("DD MMM YYYY")} ・ 🕐 ${dayjs(item.created_time).format("hh:mm A")}`}
+				{`🗓️ ${dayjs(item.created_time).tz(TZ).format("DD MMM YYYY")} ・ 🕐 ${dayjs(item.created_time)
+					.tz(TZ)
+					.format("hh:mm A")}`}
 			</CreatedTime>
 			<Description>{item.properties["Description"].rich_text[0].plain_text}</Description>
 			<Tags>
