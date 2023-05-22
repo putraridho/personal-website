@@ -9,7 +9,6 @@ interface ListProps {
 }
 
 export function List({ items }: ListProps): React.ReactElement {
-	console.log("🚀 ~ file: index.tsx:8 ~ List ~ items:", items);
 	return (
 		<section className={style.list}>
 			{items.map((item) => (

@@ -1,11 +1,5 @@
 import { axios, host } from "@/constants";
-import { ISearchResponse, IRetrieveResponse, IQueryResponse } from "@/types";
-import {
-	PageObjectResponse,
-	PartialPageObjectResponse,
-	PartialDatabaseObjectResponse,
-	DatabaseObjectResponse,
-} from "@notionhq/client/build/src/api-endpoints";
+import { ISearchResponse, IRetrieveResponse, IQueryResponse, IBlocksChildrenResponse } from "@/types";
 
 export const search = async () => {
 	const res = await axios<ISearchResponse>("/api/search");
@@ -42,6 +36,26 @@ export const query = async (
 		data: {
 			start_cursor,
 			page_size,
+		},
+	});
+	const json = res.data;
+	return json;
+};
+
+export const block = async (block_id: string) => {
+	const res = await axios(`/api/blocks`, {
+		params: {
+			block_id,
+		},
+	});
+	const json = res.data;
+	return json;
+};
+
+export const blockChildren = async (block_id: string) => {
+	const res = await axios<IBlocksChildrenResponse>(`/api/blocks/children`, {
+		params: {
+			block_id,
 		},
 	});
 	const json = res.data;

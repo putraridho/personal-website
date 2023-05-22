@@ -1,13 +1,11 @@
 import { GetStaticProps } from "next";
 
-import { query, search } from "@/data";
 import { Container } from "@/components";
+import { query } from "@/data";
+import { IBlog, IPageBlog } from "@/types";
 import { Hero, List } from "@/ui/blogs";
-import { useEffect } from "react";
-import { IPageBlog } from "@/types";
 
 export default function Blog({ items }: IPageBlog) {
-	useEffect(() => {}, []);
 	return (
 		<main>
 			<Container>
@@ -19,25 +17,26 @@ export default function Blog({ items }: IPageBlog) {
 }
 
 export const getStaticProps: GetStaticProps<IPageBlog> = async () => {
-	const res = await query("fcee7553f4ba4b858bbdbe9c17259331");
+	let has_more = false;
+	let next_cursor = null;
+	let items: IBlog[] = [];
 
-	if (res.success) {
-		const { has_more, next_cursor, results } = res;
-
-		return {
-			props: {
-				items: results,
-				hasMore: has_more,
-				nextCursor: next_cursor,
-			},
-		};
+	try {
+		const res = await query(process.env.NEXT_PUBLIC_NOTION_DATABASE_ID);
+		if (res.success) {
+			has_more = res.has_more;
+			next_cursor = res.next_cursor;
+			items = res.results;
+		}
+	} catch (err) {
+		// Do Nothing
 	}
 
 	return {
 		props: {
-			items: [],
-			hasMore: false,
-			nextCursor: null,
+			has_more,
+			next_cursor,
+			items,
 		},
 	};
 };
