@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { notion } from "@/constants";
+import { IRetrieveResponse } from "@/types";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<IRetrieveResponse>) {
 	if (req.method === "GET") {

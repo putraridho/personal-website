@@ -10,5 +10,12 @@ export const host = process.env.NODE_ENV === "development" ? "http://localhost:3
 
 export const axios = Axios.create({
 	baseURL: host,
-	timeout: 3000,
+	timeout: 60000,
 });
+
+export const headerMenu = [
+	{ text: "About", href: "/" },
+	{ text: "Projects", href: "#" },
+	{ text: "Blogs", href: "/blogs" },
+	{ text: "Contact", href: "#" },
+];

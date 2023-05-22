@@ -1,15 +1,18 @@
+import classNames from "classnames";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { RiCloseLine, RiMenu4Line } from "react-icons/ri";
+
+import { headerMenu } from "@/constants";
 
 import { Container } from "../Container";
 import { Logo } from "../Logo";
 
-import { useEffect, useState } from "react";
-
 import style from "./style.module.sass";
-import classNames from "classnames";
 
 export function Header(): React.ReactElement {
+	const router = useRouter();
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 
 	useEffect(() => {
@@ -32,11 +35,13 @@ export function Header(): React.ReactElement {
 						<Logo />
 					</Link>
 					<nav className={classNames(style.nav, { [style.open]: isOpen })}>
-						{["About", "Projects", "Blog", "Contact"].map((link, i) => (
-							<span key={link} className={style.link}>
-								{link}
-								{i === 0 && <span className={style.active} />}
-							</span>
+						{headerMenu.map(({ text, href }) => (
+							<Link key={text} href={href}>
+								<span className={style.link}>
+									{text}
+									{router.asPath === href && <span className={style.active} />}
+								</span>
+							</Link>
 						))}
 					</nav>
 					<button type="button" className={style.hamburger} onClick={() => setIsOpen((curr) => !curr)}>

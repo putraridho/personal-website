@@ -2,10 +2,12 @@ import { QueryDatabaseParameters } from "@notionhq/client/build/src/api-endpoint
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { notion } from "@/constants";
+import { IBlog, IQueryResponse } from "@/types";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<IQueryResponse>) {
 	if (req.method === "POST") {
-		const { database_id, start_cursor, page_size } = req.query;
+		const { database_id } = req.query;
+		const { start_cursor, page_size } = req.body;
 		let args: QueryDatabaseParameters = {
 			database_id: String(database_id),
 		};
@@ -29,7 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
 			return res.status(200).json({
 				success: true,
-				results,
+				results: results as IBlog[],
 				has_more,
 				next_cursor,
 			});
