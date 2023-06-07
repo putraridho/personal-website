@@ -14,6 +14,8 @@ interface IPageBlog {
 
 interface IPageBlogDetail {
 	title: string | null;
+	description?: string | null;
+	tags: string[];
 	created_time: string | null;
 	next_cursor: string | null;
 	has_more: boolean;
@@ -82,7 +84,8 @@ type IBlocksResponse =
 			id: string;
 			created_time: string;
 			title: string;
-			description?: string;
+			description: string | null;
+			tags: string[];
 	  };
 
 interface ITag {

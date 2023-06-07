@@ -1,45 +1,34 @@
+import { GetServerSideProps } from "next";
+import Head from "next/head";
+
 import { DATABASE_ID } from "@/constants";
 import { block, blockChildren, query } from "@/data";
 import { IPageBlogDetail } from "@/types";
 import { Detail } from "@/ui/blogs";
 import { deserializeToReactNodes } from "@/utils";
-import { GetStaticPaths, GetStaticProps } from "next";
 
-export default function BlogsDetail({ title, created_time, blocks }: IPageBlogDetail) {
+export default function BlogsDetail({ title, created_time, description, tags, blocks }: IPageBlogDetail) {
 	return (
-		<Detail title={title} created_time={created_time}>
-			{deserializeToReactNodes(blocks)}
-		</Detail>
+		<>
+			<Head>
+				{title && (
+					<>
+						<title>{title}</title>
+						<meta property="og:title" content={title} key="title" />
+					</>
+				)}
+				{description && <meta name="description" content={description} />}
+				<meta name="keywords" content={tags.join(", ")} />
+				<meta name="author" content="Muhammad Ridho Putra" />
+			</Head>
+			<Detail title={title} created_time={created_time}>
+				{deserializeToReactNodes(blocks)}
+			</Detail>
+		</>
 	);
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-	try {
-		const res = await query(DATABASE_ID);
-		if (res.success) {
-			return {
-				fallback: false,
-				paths: res.results.map(({ id }) => ({
-					params: {
-						block_id: id,
-					},
-				})),
-			};
-		}
-	} catch (err) {
-		return {
-			fallback: false,
-			paths: [],
-		};
-	}
-
-	return {
-		fallback: false,
-		paths: [],
-	};
-};
-
-export const getStaticProps: GetStaticProps<IPageBlogDetail> = async (req) => {
+export const getServerSideProps: GetServerSideProps<IPageBlogDetail> = async (req) => {
 	const block_id = String(req.params?.block_id);
 	try {
 		const block_children_res = await blockChildren(block_id);
@@ -49,6 +38,8 @@ export const getStaticProps: GetStaticProps<IPageBlogDetail> = async (req) => {
 			return {
 				props: {
 					title: block_res.title,
+					description: block_res.description,
+					tags: block_res.tags,
 					created_time: block_res.created_time,
 					has_more: block_children_res.has_more,
 					next_cursor: block_children_res.next_cursor,
@@ -60,6 +51,8 @@ export const getStaticProps: GetStaticProps<IPageBlogDetail> = async (req) => {
 		return {
 			props: {
 				title: null,
+				description: null,
+				tags: [],
 				created_time: null,
 				has_more: false,
 				next_cursor: null,
@@ -72,6 +65,8 @@ export const getStaticProps: GetStaticProps<IPageBlogDetail> = async (req) => {
 	return {
 		props: {
 			title: null,
+			description: null,
+			tags: [],
 			created_time: null,
 			has_more: false,
 			next_cursor: null,

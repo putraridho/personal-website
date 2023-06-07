@@ -28,12 +28,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 				},
 			});
 
-			let description = undefined;
+			let description = null;
+
+			let tags: string[] = [];
 
 			const page = filtered.results[0].object === "page" ? (filtered.results[0] as PageObjectResponse) : undefined;
 
 			if (page?.properties["Description"].type === "rich_text") {
 				description = page.properties["Description"]?.rich_text[0]?.plain_text || description;
+			}
+			if (page?.properties["Tags"].type === "multi_select") {
+				tags = (page.properties["Tags"]?.multi_select || []).map(({ name }) => name);
 			}
 
 			return res.status(200).json({
@@ -42,6 +47,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 				created_time,
 				title,
 				description,
+				tags,
 			});
 		} catch (err) {
 			return res.status(404).json({
