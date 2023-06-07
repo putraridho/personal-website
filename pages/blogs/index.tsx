@@ -1,6 +1,7 @@
 import { GetStaticProps } from "next";
 
 import { Container } from "@/components";
+import { DATABASE_ID } from "@/constants";
 import { query } from "@/data";
 import { IPageBlog } from "@/types";
 import { Hero, List } from "@/ui/blogs";
@@ -18,7 +19,7 @@ export default function Blog({ items }: IPageBlog) {
 
 export const getStaticProps: GetStaticProps<IPageBlog> = async () => {
 	try {
-		const res = await query(process.env.NEXT_PUBLIC_NOTION_DATABASE_ID);
+		const res = await query(DATABASE_ID);
 		if (res.success) {
 			return {
 				props: {

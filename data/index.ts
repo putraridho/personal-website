@@ -1,5 +1,5 @@
-import { axios, host } from "@/constants";
-import { ISearchResponse, IRetrieveResponse, IQueryResponse, IBlocksChildrenResponse } from "@/types";
+import { axios, HOST } from "@/constants";
+import { ISearchResponse, IRetrieveResponse, IQueryResponse, IBlocksChildrenResponse, IBlocksResponse } from "@/types";
 
 export const search = async () => {
 	const res = await axios<ISearchResponse>("/api/search");
@@ -42,10 +42,11 @@ export const query = async (
 	return json;
 };
 
-export const block = async (block_id: string) => {
-	const res = await axios(`/api/blocks`, {
+export const block = async (block_id: string, database_id: string) => {
+	const res = await axios<IBlocksResponse>(`/api/blocks`, {
 		params: {
 			block_id,
+			database_id,
 		},
 	});
 	const json = res.data;

@@ -1,18 +1,16 @@
 import classNames from "classnames";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { RiCloseLine, RiMenu4Line } from "react-icons/ri";
 
-import { headerMenu } from "@/constants";
+import { HEADER_MENU } from "@/constants";
 
 import { Container } from "../Container";
 import { Logo } from "../Logo";
+import { Active } from "./Active";
 
 import style from "./style.module.sass";
-
-const Active = dynamic(() => import("./Active").then((mod) => mod.Active), { ssr: false });
 
 export function Header(): React.ReactElement {
 	const router = useRouter();
@@ -30,6 +28,23 @@ export function Header(): React.ReactElement {
 		}
 	}, []);
 
+	const active = useCallback(
+		(href = "") => {
+			const paths = router.asPath.split("/");
+
+			if (paths.length === 1 && href === "/") {
+				return true;
+			}
+
+			if (paths.slice(1).includes(href.replace("/", ""))) {
+				return true;
+			}
+
+			return false;
+		},
+		[router.asPath],
+	);
+
 	return (
 		<header className={style.header}>
 			<Container>
@@ -38,11 +53,11 @@ export function Header(): React.ReactElement {
 						<Logo />
 					</Link>
 					<nav className={classNames(style.nav, { [style.open]: isOpen })}>
-						{headerMenu.map(({ text, href }) => (
+						{HEADER_MENU.map(({ text, href }) => (
 							<Link key={text} href={href} onClick={() => setIsOpen(false)}>
 								<span className={style.link}>
 									{text}
-									<Active active={router.asPath === href} />
+									<Active active={active(href)} />
 								</span>
 							</Link>
 						))}

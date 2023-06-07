@@ -32,7 +32,7 @@ export function ListItem({ item }: ListItemProps): React.ReactElement {
 					<Badge key={id}>{name}</Badge>
 				))}
 			</Tags>
-			<CTA href="#" />
+			<CTA href={`/blogs/${item.id}`} />
 		</Card>
 	);
 }
