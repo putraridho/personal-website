@@ -26,7 +26,7 @@ export function ListItem({ item }: ListItemProps): React.ReactElement {
 					.tz(TZ)
 					.format("hh:mm A")}`}
 			</CreatedTime>
-			<Description>{item.properties["Description"].rich_text[0].plain_text}</Description>
+			<Description>{item.properties["Description"].rich_text?.[0]?.plain_text}</Description>
 			<Tags>
 				{item.properties["Tags"].multi_select.map(({ id, name }: ITag) => (
 					<Badge key={id}>{name}</Badge>
