@@ -29,38 +29,38 @@ export default function BlogsDetail({ title, created_time, description, tags, bl
 }
 
 export const getServerSideProps: GetServerSideProps<IPageBlogDetail> = async (req) => {
-	const block_id = String(req.params?.block_id);
-	try {
-		const block_children_res = await blockChildren(block_id);
-		const block_res = await block(block_id, DATABASE_ID);
+	// const block_id = String(req.params?.block_id);
+	// try {
+	// 	const block_children_res = await blockChildren(block_id);
+	// 	const block_res = await block(block_id, DATABASE_ID);
 
-		if (block_children_res.success && block_res.success) {
-			return {
-				props: {
-					title: block_res.title,
-					description: block_res.description,
-					tags: block_res.tags,
-					created_time: block_res.created_time,
-					has_more: block_children_res.has_more,
-					next_cursor: block_children_res.next_cursor,
-					blocks: block_children_res.blocks,
-				},
-			};
-		}
-	} catch (err) {
-		return {
-			props: {
-				title: null,
-				description: null,
-				tags: [],
-				created_time: null,
-				has_more: false,
-				next_cursor: null,
-				blocks: [],
-			},
-			notFound: true,
-		};
-	}
+	// 	if (block_children_res.success && block_res.success) {
+	// 		return {
+	// 			props: {
+	// 				title: block_res.title,
+	// 				description: block_res.description,
+	// 				tags: block_res.tags,
+	// 				created_time: block_res.created_time,
+	// 				has_more: block_children_res.has_more,
+	// 				next_cursor: block_children_res.next_cursor,
+	// 				blocks: block_children_res.blocks,
+	// 			},
+	// 		};
+	// 	}
+	// } catch (err) {
+	// 	return {
+	// 		props: {
+	// 			title: null,
+	// 			description: null,
+	// 			tags: [],
+	// 			created_time: null,
+	// 			has_more: false,
+	// 			next_cursor: null,
+	// 			blocks: [],
+	// 		},
+	// 		notFound: true,
+	// 	};
+	// }
 
 	return {
 		props: {
