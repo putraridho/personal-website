@@ -2,37 +2,28 @@ import { axios, HOST } from "@/constants";
 import { ISearchResponse, IRetrieveResponse, IQueryResponse, IBlocksChildrenResponse, IBlocksResponse } from "@/types";
 
 export const search = async () => {
-	const res = await axios<ISearchResponse>("/api/search");
+	const res = await axios<ISearchResponse>("/search");
 	const json = res.data;
 	return json;
 };
 
 export const retrieve = async (database_id: string) => {
-	const res = await axios<IRetrieveResponse>("/api/databases/retrieve", {
+	const res = await axios<IRetrieveResponse>("/databases", {
 		method: "GET",
-		params: {
-			database_id,
-		},
 	});
 	const json = res.data;
 	return json;
 };
 
-export const query = async (
-	database_id: string,
-	{
-		start_cursor,
-		page_size,
-	}: {
-		start_cursor?: string;
-		page_size?: number;
-	} = {},
-) => {
-	const res = await axios<IQueryResponse>("/api/databases/query", {
+export const query = async ({
+	start_cursor,
+	page_size,
+}: {
+	start_cursor?: string;
+	page_size?: number;
+} = {}) => {
+	const res = await axios<IQueryResponse>("/databases/query", {
 		method: "POST",
-		params: {
-			database_id,
-		},
 		data: {
 			start_cursor,
 			page_size,
@@ -42,22 +33,17 @@ export const query = async (
 	return json;
 };
 
-export const block = async (block_id: string, database_id: string) => {
-	const res = await axios<IBlocksResponse>(`/api/blocks`, {
-		params: {
-			block_id,
-			database_id,
-		},
+export const block = async (block_id: string) => {
+	const res = await axios<IBlocksResponse>(`/blocks/${block_id}`, {
+		method: "GET",
 	});
 	const json = res.data;
 	return json;
 };
 
 export const blockChildren = async (block_id: string) => {
-	const res = await axios<IBlocksChildrenResponse>(`/api/blocks/children`, {
-		params: {
-			block_id,
-		},
+	const res = await axios<IBlocksChildrenResponse>(`/blocks/${block_id}/children`, {
+		method: "GET",
 	});
 	const json = res.data;
 	return json;

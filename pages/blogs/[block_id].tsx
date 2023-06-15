@@ -1,7 +1,6 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 
-import { DATABASE_ID } from "@/constants";
 import { block, blockChildren, query } from "@/data";
 import { IPageBlogDetail } from "@/types";
 import { Detail } from "@/ui/blogs";
@@ -32,7 +31,7 @@ export const getServerSideProps: GetServerSideProps<IPageBlogDetail> = async (re
 	const block_id = String(req.params?.block_id);
 	try {
 		const block_children_res = await blockChildren(block_id);
-		const block_res = await block(block_id, DATABASE_ID);
+		const block_res = await block(block_id);
 
 		if (block_children_res.success && block_res.success) {
 			return {
