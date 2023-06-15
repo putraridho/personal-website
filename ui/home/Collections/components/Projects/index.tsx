@@ -12,7 +12,7 @@ export function Projects(): React.ReactElement {
 					<RiArchiveLine size="1.5rem" color="var(--accent-300)" />
 					<h2>Projects</h2>
 				</div>
-				<Button>Find out</Button>
+				<Button aria-label="find out projects">Find out</Button>
 			</div>
 			<p className={style.text}>Discover the showcase of my creations I made for fun</p>
 		</Card>

@@ -49,12 +49,12 @@ export function Header(): React.ReactElement {
 		<header className={style.header}>
 			<Container>
 				<div className={style.row}>
-					<Link href="/">
+					<Link href="/" aria-label="Go to home">
 						<Logo />
 					</Link>
 					<nav className={classNames(style.nav, { [style.open]: isOpen })}>
 						{HEADER_MENU.map(({ text, href }) => (
-							<Link key={text} href={href} onClick={() => setIsOpen(false)}>
+							<Link key={text} href={href} onClick={() => setIsOpen(false)} aria-label={`Go to ${text}`}>
 								<span className={style.link}>
 									{text}
 									<Active active={active(href)} />
@@ -62,7 +62,12 @@ export function Header(): React.ReactElement {
 							</Link>
 						))}
 					</nav>
-					<button type="button" className={style.hamburger} onClick={() => setIsOpen((curr) => !curr)}>
+					<button
+						type="button"
+						aria-label="hamburger toggle"
+						className={style.hamburger}
+						onClick={() => setIsOpen((curr) => !curr)}
+					>
 						{isOpen ? <RiCloseLine size={24} /> : <RiMenu4Line size={24} />}
 					</button>
 				</div>

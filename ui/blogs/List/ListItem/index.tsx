@@ -32,7 +32,7 @@ export function ListItem({ item }: ListItemProps): React.ReactElement {
 					<Badge key={id}>{name}</Badge>
 				))}
 			</Tags>
-			<CTA href={`/blogs/${item.id}`} />
+			<CTA href={`/blogs/${item.id}`} title={item.properties["Title"].title[0].plain_text} />
 		</Card>
 	);
 }
@@ -53,9 +53,9 @@ function Tags({ children }: { children: React.ReactNode }): React.ReactElement {
 	return <div className={style.tags}>{children}</div>;
 }
 
-function CTA({ href }: { href: string }): React.ReactElement {
+function CTA({ href, title }: { href: string; title: string }): React.ReactElement {
 	return (
-		<Link href={href} className={style.cta}>
+		<Link href={href} className={style.cta} aria-label={`Read ${title}`}>
 			Read <RiArrowRightLine />
 		</Link>
 	);

@@ -3,6 +3,7 @@ import { RiArrowRightLine, RiMagicLine } from "react-icons/ri";
 import { Card } from "@/components";
 
 import style from "./style.module.sass";
+import Link from "next/link";
 
 export function Blog(): React.ReactElement {
 	return (
@@ -12,9 +13,9 @@ export function Blog(): React.ReactElement {
 				<h2>Blog</h2>
 			</div>
 			<p className={style.text}>A realm where I share my ideas and experience</p>
-			<a className={style.link}>
+			<Link href="/blogs" aria-label="Warp me to blogs" className={style.link}>
 				Warp me <RiArrowRightLine />
-			</a>
+			</Link>
 		</Card>
 	);
 }

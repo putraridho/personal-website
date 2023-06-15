@@ -32,6 +32,7 @@ export function Contact(): React.ReactElement {
 			<div className={style.socials}>
 				<Social
 					href="https://github.com/putraridho"
+					aria-label="Go to Github"
 					content="github.com/putraridho"
 					Icon={RiGithubLine}
 					target="_blank"
@@ -39,6 +40,7 @@ export function Contact(): React.ReactElement {
 				/>
 				<Social
 					href="mailto:muhammadridhoputra@gmail.com"
+					aria-label="Copy e-mail"
 					content="muhammadridhoputra@gmail.com"
 					Icon={RiMailLine}
 					onClick={(e) => {
@@ -49,6 +51,7 @@ export function Contact(): React.ReactElement {
 				/>
 				<Social
 					href="https://www.linkedin.com/in/muhammad-ridho-putra-841146116"
+					aria-label="Go to Linkedin"
 					content="linkedin.com/in/muhammad-ridho-putra-841146116"
 					Icon={RiLinkedinLine}
 					target="_blank"
@@ -56,6 +59,7 @@ export function Contact(): React.ReactElement {
 				/>
 				<Social
 					href="https://www.instagram.com/mrputraridho"
+					aria-label="Go to Instagram"
 					content="instagram.com/mrputraridho"
 					Icon={RiInstagramLine}
 					target="_blank"

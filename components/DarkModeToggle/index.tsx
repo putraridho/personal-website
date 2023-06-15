@@ -32,7 +32,7 @@ export function DarkModeToggle(): React.ReactElement {
 	}, [setTheme, systemTheme, theme]);
 
 	return (
-		<button type="button" className={style.darkModeButton} onClick={handleToggle}>
+		<button type="button" aria-label="darkmode toggle" className={style.darkModeButton} onClick={handleToggle}>
 			<ButtonIcon size={20} />
 		</button>
 	);
