@@ -18,26 +18,26 @@ export default function Blog({ items }: IPageBlog) {
 }
 
 export const getStaticProps: GetStaticProps<IPageBlog> = async () => {
-	// try {
-	// 	const res = await query(DATABASE_ID);
-	// 	if (res.success) {
-	// 		return {
-	// 			props: {
-	// 				has_more: res.has_more,
-	// 				next_cursor: res.next_cursor,
-	// 				items: res.results,
-	// 			},
-	// 		};
-	// 	}
-	// } catch (err) {
-	// 	return {
-	// 		props: {
-	// 			has_more: false,
-	// 			next_cursor: null,
-	// 			items: [],
-	// 		},
-	// 	};
-	// }
+	try {
+		const res = await query(DATABASE_ID);
+		if (res.success) {
+			return {
+				props: {
+					has_more: res.has_more,
+					next_cursor: res.next_cursor,
+					items: res.results,
+				},
+			};
+		}
+	} catch (err) {
+		return {
+			props: {
+				has_more: false,
+				next_cursor: null,
+				items: [],
+			},
+		};
+	}
 
 	return {
 		props: {
