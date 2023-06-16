@@ -1,13 +1,5 @@
-import { Container } from "@/components";
-import { Collections, Hero } from "@/ui/home";
+import { NewHome } from "@/ui/new-home";
 
 export default function Home() {
-	return (
-		<main>
-			<Container>
-				<Hero />
-				<Collections />
-			</Container>
-		</main>
-	);
+	return <NewHome />;
 }

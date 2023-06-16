@@ -1,30 +1,24 @@
 import { Analytics } from "@vercel/analytics/react";
-import { ThemeProvider } from "next-themes";
 import type { AppProps } from "next/app";
-import dynamic from "next/dynamic";
-import { Inter } from "next/font/google";
-import { useState } from "react";
-
-import { Header } from "@/components";
-
-import "@/styles/globals.sass";
+import { Work_Sans } from "next/font/google";
 import Head from "next/head";
 
-const ColorSchemePicker = dynamic(() => import("@/components").then((mod) => mod.ColorSchemePicker), { ssr: false });
-const DarkModeToggle = dynamic(() => import("@/components").then((mod) => mod.DarkModeToggle), { ssr: false });
-const Toast = dynamic(() => import("@/components").then((mod) => mod.Toast), { ssr: false });
+import "@/styles/globals.sass";
 
-const inter = Inter({
-	weight: ["300", "400", "600", "700"],
+const workSans = Work_Sans({
+	weight: ["300", "400", "900"],
 	subsets: ["latin"],
 	fallback: ["sans-serif"],
 });
 
 export default function App({ Component, pageProps }: AppProps) {
-	const [colorScheme, setColorScheme] = useState<number | null>(null);
-
 	return (
 		<>
+			<style jsx global>{`
+				body {
+					font-family: ${workSans.style.fontFamily};
+				}
+			`}</style>
 			<Head>
 				<title>{`🪄 Greetings, It's Ridho`}</title>
 				<meta
@@ -33,30 +27,8 @@ export default function App({ Component, pageProps }: AppProps) {
 				/>
 				<meta name="author" content="Muhammad Ridho Putra" />
 			</Head>
-			<ThemeProvider>
-				<style jsx global>{`
-					:root {
-						${colorScheme
-							? `
-						--accent-100: var(--scheme-${colorScheme}-100); 
-						--accent-200: var(--scheme-${colorScheme}-200); 
-						--accent-300: var(--scheme-${colorScheme}-300); 
-						--accent-400: var(--scheme-${colorScheme}-400); 
-						--accent-500: var(--scheme-${colorScheme}-500);
-						`
-							: ""}
-					}
-					body {
-						font-family: ${inter.style.fontFamily};
-					}
-				`}</style>
-				<Header />
-				<DarkModeToggle />
-				<ColorSchemePicker onSelect={setColorScheme} />
-				<Toast />
-				<Component {...pageProps} />
-				<Analytics />
-			</ThemeProvider>
+			<Component {...pageProps} />
+			<Analytics />
 		</>
 	);
 }

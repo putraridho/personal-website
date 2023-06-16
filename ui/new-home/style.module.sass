@@ -1,0 +1,167 @@
+.wrapper
+  display: flex
+  flex-direction: column
+  height: 100vh
+
+.banner
+  display: flex
+  flex: 2
+
+  & + .hLine
+    animation: .6s HLine ease-out
+
+.bannerContent
+  display: flex
+  align-items: center
+  padding: 32px
+  flex: 2
+
+  &:hover
+    .bannerContainer
+      opacity: 1
+      transform: translateY(0)
+    
+    .magicWand
+      transform: rotate(10deg)
+
+  & + .vLine
+    animation: .4s VLine ease-out
+
+.bannerContainer
+  display: flex
+  flex-direction: column
+  gap: 16px
+  opacity: 0.5
+  max-width: 450px
+  transform: translateY(4px)
+  transition: .3s all ease-out
+
+.hero
+  display: flex
+  align-items: center
+  justify-content: center
+  flex: 1
+  padding: 32px
+
+  img
+    max-width: 100%
+
+.collection
+  display: flex
+  flex: 1
+
+  & + .hLine
+    animation: .6s .3s HLine ease-out, .3s Opacity ease-out
+
+.collectionItem
+  display: flex
+  flex: 1
+  align-items: center
+  justify-content: space-between
+  gap: 36px
+  padding: 16px 64px
+  transition: .3s all ease-out
+
+  .content
+    display: flex
+    flex-direction: column
+    flex: 1
+    gap: 16px
+
+  .headWrapper
+    position: relative
+    overflow: hidden
+
+  .head
+    font:
+      size: 56px
+      weight: 900
+    text-transform: uppercase
+
+    &::after
+      content: ''
+      position: absolute
+      left: 0
+      top: 100%
+
+  &:nth-child(1)
+    .head::after
+      content: 'PROJECTS'
+
+  &:nth-child(3)
+    .head::after
+      content: 'BLOGS'
+
+  &:hover
+    background: var(--white)
+    color: var(--primary)
+
+    .head
+      transform: translateY(-100%)
+
+    .arrowRight
+      transform: translateX(24px)
+
+  & + .vLine
+    animation: .3s .3s VLine ease-out, .3s Opacity ease-out
+
+.nav
+  height: 100px
+  display: flex
+
+  .vLine
+    &:nth-child(2)
+      animation: .3s .5s VLine ease-out, .5s Opacity ease-out
+
+    &:nth-child(4)
+      animation: .3s .7s VLine ease-out, .7s Opacity ease-out
+
+.navItem
+  display: flex
+  align-items: center
+  flex: 1
+  padding: 16px 32px
+
+.navLogo
+
+.navMenu
+  justify-content: center
+  gap: 64px
+  font-size: 13px
+
+.navSocials
+  justify-content: flex-end
+  gap: 32px
+
+.vLine
+  height: 100%
+  width: 1px
+  background-color: var(--primary-border)
+
+.hLine
+  height: 1px
+  width: 100%
+  background-color: var(--primary-border)
+
+@keyframes Opacity
+  0%
+    opacity: 0
+  100%
+    opacity: 0
+    
+
+@keyframes VLine
+  0%
+    height: 0%
+    opacity: 0
+  100%
+    height: 100%
+    opacity: 1
+
+@keyframes HLine
+  0%
+    width: 0%
+    opacity: 0
+  100%
+    width: 100%
+    opacity: 1

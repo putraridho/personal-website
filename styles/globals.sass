@@ -1,66 +1,28 @@
 @import ./function
 
-$scheme-1-colors: (100: #F7B4A4, 200: #F7E4BE, 300: #B5D99C, 400: #74C7B8, 500: #A692B7)
-$scheme-2-colors: (100: #F7D8D0, 200: #F7C6B9, 300: #F7B4A4, 400: #F79C87, 500: #F7826D)
-$scheme-3-colors: (100: #C7E9E4, 200: #A0D8CC, 300: #7EC1B4, 400: #5CA99C, 500: #389283)
-$scheme-4-colors: (100: #D5CBE1, 200: #BFB1D1, 300: #A692B7, 400: #8D749C, 500: #6C567F)
-$neutral-colors: (0: #FFFFFF, 100: #F0F0F0, 200: #BFBFBF, 300: #7F7F7F, 400: #4C4C4C, 500: #2E2E2E)
-$white: #FFFFFF
+
 
 :root
-  @each $value, $hex in $scheme-1-colors
-    --scheme-1-#{$value}: #{$hex}
-
-  @each $value, $hex in $scheme-2-colors
-    --scheme-2-#{$value}: #{$hex}
-
-  @each $value, $hex in $scheme-3-colors
-    --scheme-3-#{$value}: #{$hex}
-
-  @each $value, $hex in $scheme-4-colors
-    --scheme-4-#{$value}: #{$hex}
-
-  @for $i from 1 through 5
-    --accent-#{$i}00: var(--scheme-2-#{$i}00)
-  @each $value, $hex in $scheme-2-colors
-    --accent-#{$value}: #{$hex}
-
-  @each $value, $hex in $neutral-colors
-    --grey-#{$value}: #{$hex}
-
-  --white: var(--grey-0)
-  --shadow: 0px 4px 16px 0px rgba(150, 150, 150, 0.15)
-
-  --notion-blue: #337EA9
-  --notion-brown: #9F6B53
-  --notion-gray: #787774
-  --notion-green: #448361
-  --notion-orange: #D9730D
-  --notion-pink: #C14C8A
-  --notion-purple: #9065B0
-  --notion-red: #D44C47
-  --notion-yellow: #CB912F
-
-[data-theme='dark']
-  @each $value, $hex in $neutral-colors
-    --grey-#{500 - $value}: #{$hex}
+  --primary: #0A0F05
+  --primary-border: #182712
+  --white: #F2FFF2
 
 *
   box-sizing: border-box
 
 body
   margin: 0
-  font-size: 16px
-  line-height: 1.5
-  color: var(--grey-500)
-  background-color: var(--white)
+  font-size: 14px
+  color: var(--white)
+  background-color: var(--primary)
   letter-spacing: 0.05em
 
 h1, h2, h3, h4, h5, h6, p, span
   margin: 0
+  font-weight: 300
 
 h1, h2, h3, h4, h5, h6, p, span, svg
-  transition: .2s all ease
+  transition: .3s all ease-out
 
 a
   color: inherit
