@@ -11,10 +11,23 @@
     animation: .6s HLine ease-out
 
 .bannerContent
+  position: relative
   display: flex
   align-items: center
   padding: 32px
   flex: 2
+
+  &::before
+    content: ''
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), transparentize(#F2FFF2, .94), transparent 40%)
+    height: 100%
+    width: 100%
+    opacity: 0
+    transition: .5s opacity linear
 
   &:hover
     .bannerContainer
@@ -24,10 +37,14 @@
     .magicWand
       transform: rotate(10deg)
 
+    &::before
+      opacity: 1
+
   & + .vLine
     animation: .4s VLine ease-out
 
 .bannerContainer
+  position: relative
   display: flex
   flex-direction: column
   gap: 16px
@@ -128,6 +145,10 @@
   justify-content: center
   gap: 64px
   font-size: 13px
+
+  a:hover
+    text-decoration: underline
+    text-underline-offset: 4px
 
 .navSocials
   justify-content: flex-end
