@@ -1,9 +1,12 @@
 import { Analytics } from "@vercel/analytics/react";
 import type { AppProps } from "next/app";
+import dynamic from "next/dynamic";
 import { Work_Sans } from "next/font/google";
 import Head from "next/head";
 
 import "@/styles/globals.sass";
+
+const Toast = dynamic(() => import("@/components").then((mod) => mod.Toast), { ssr: false });
 
 const workSans = Work_Sans({
 	weight: ["300", "400", "900"],
@@ -27,6 +30,7 @@ export default function App({ Component, pageProps }: AppProps) {
 				/>
 				<meta name="author" content="Muhammad Ridho Putra" />
 			</Head>
+			<Toast />
 			<Component {...pageProps} />
 			<Analytics />
 		</>

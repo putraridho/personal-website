@@ -2,8 +2,10 @@ import { EnvelopeClosedIcon, GitHubLogoIcon, InstagramLogoIcon, LinkedInLogoIcon
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
-import { MouseEventHandler, useCallback, useRef } from "react";
+import { AnchorHTMLAttributes, MouseEventHandler, PropsWithChildren, useCallback, useRef } from "react";
+import { toast } from "react-toastify";
 
+import { Avatar, Tooltip } from "@/components";
 import { ArrowRight, MagicWand } from "@/icons";
 
 import style from "./style.module.sass";
@@ -25,6 +27,19 @@ export function NewHome(): React.ReactElement {
 		[bannerContentRef],
 	);
 
+	const copyToClipboard = useCallback((text: string) => {
+		if (navigator.clipboard) {
+			navigator.clipboard.writeText(text);
+		} else {
+			const input = document.createElement("input");
+			input.value = text;
+			document.body.appendChild(input);
+			input.select();
+			document.execCommand("copy");
+			document.body.removeChild(input);
+		}
+	}, []);
+
 	return (
 		<div className={style.wrapper}>
 			<div className={style.banner}>
@@ -39,7 +54,7 @@ export function NewHome(): React.ReactElement {
 				</div>
 				<VLine />
 				<div className={style.hero}>
-					<Image src="/Avatar.svg" alt="avatar" height={240} width={240} />
+					<Avatar />
 				</div>
 			</div>
 			<HLine />
@@ -79,10 +94,45 @@ export function NewHome(): React.ReactElement {
 				</div>
 				<VLine />
 				<div className={classNames(style.navItem, style.navSocials)}>
-					<EnvelopeClosedIcon height={20} width={20} />
-					<GitHubLogoIcon height={20} width={20} />
-					<InstagramLogoIcon height={20} width={20} />
-					<LinkedInLogoIcon height={20} width={20} />
+					<Social
+						href="mailto:muhammadridhoputra@gmail.com"
+						aria-label="Copy e-mail"
+						content="muhammadridhoputra@gmail.com"
+						onClick={(e) => {
+							e.preventDefault();
+							copyToClipboard("muhammadridhoputra@gmail.com");
+							toast("Copied to clipboard");
+						}}
+					>
+						<EnvelopeClosedIcon height={20} width={20} />
+					</Social>
+					<Social
+						href="https://github.com/putraridho"
+						aria-label="Go to Github"
+						content="github.com/putraridho"
+						target="_blank"
+						rel="noreferrer noopener"
+					>
+						<GitHubLogoIcon height={20} width={20} />
+					</Social>
+					{/* <Social
+						href="https://www.instagram.com/mrputraridho"
+						aria-label="Go to Instagram"
+						content="instagram.com/mrputraridho"
+						target="_blank"
+						rel="noreferrer noopener"
+					>
+						<InstagramLogoIcon height={20} width={20} />
+					</Social> */}
+					<Social
+						href="https://www.linkedin.com/in/muhammad-ridho-putra-841146116"
+						aria-label="Go to Linkedin"
+						content="linkedin.com/in/muhammad-ridho-putra-841146116"
+						target="_blank"
+						rel="noreferrer noopener"
+					>
+						<LinkedInLogoIcon height={20} width={20} />
+					</Social>
 				</div>
 			</nav>
 		</div>
@@ -95,4 +145,19 @@ function HLine() {
 
 function VLine() {
 	return <div className={style.vLine} />;
+}
+
+interface SocialProps extends PropsWithChildren<AnchorHTMLAttributes<HTMLAnchorElement>> {
+	href: string;
+	content: string;
+}
+
+function Social({ content, children, ...props }: SocialProps) {
+	return (
+		<div className={style.social}>
+			<Tooltip content={content}>
+				<Link {...props}>{children}</Link>
+			</Tooltip>
+		</div>
+	);
 }

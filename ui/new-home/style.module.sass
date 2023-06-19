@@ -23,7 +23,7 @@
     top: 50%
     left: 50%
     transform: translate(-50%, -50%)
-    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), transparentize(#F2FFF2, .94), transparent 40%)
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), transparentize(#182712, .1), transparent 40%)
     height: 100%
     width: 100%
     opacity: 0
@@ -151,8 +151,34 @@
     text-underline-offset: 4px
 
 .navSocials
+  align-items: center
   justify-content: flex-end
   gap: 32px
+
+.social
+  position: relative
+  cursor: pointer
+
+  svg
+    position: relative
+    mix-blend-mode: difference
+
+  &::before
+    content: ''
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%) scale(0)
+    opacity: 0
+    border-radius: 50px
+    height: 32px
+    width: 32px
+    background: var(--white)
+    transition: .5s all ease
+
+  &:hover::before
+    transform: translate(-50%, -50%) scale(1)
+    opacity: 1
 
 .vLine
   height: 100%

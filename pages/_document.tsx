@@ -4,7 +4,7 @@ export default function MyDocument() {
 	return (
 		<Html lang="en">
 			<Head>
-				<link rel="mrp logo" href="/logo.svg" type="image/x-icon" />
+				<link rel="mrp logo" href="/favicon.svg" type="image/x-icon" />
 			</Head>
 			<body>
 				<Main />
