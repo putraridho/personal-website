@@ -60,10 +60,10 @@ export function Avatar() {
 				<path
 					d="M186.312 227.922C186.312 227.922 190.704 252.549 188.979 266.98"
 					stroke="#F2FFF2"
-					stroke-width="5.1257"
-					stroke-miterlimit="10"
-					stroke-linecap="round"
-					stroke-linejoin="round"
+					strokeWidth="5.1257"
+					strokeMiterlimit="10"
+					strokeLinecap="round"
+					strokeLinejoin="round"
 				/>
 				<path
 					d="M83.8804 168.314C82.7824 165.177 82.3118 161.961 82.5471 158.667C82.5471 158.353 82.7824 158.196 83.0961 158.196C83.3314 158.196 83.5667 158.432 83.5667 158.667C83.802 161.647 84.6648 164.706 86.0765 167.294C86.7824 168.863 84.4295 169.883 83.8804 168.314Z"
