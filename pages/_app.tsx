@@ -4,6 +4,8 @@ import dynamic from "next/dynamic";
 import { Work_Sans } from "next/font/google";
 import Head from "next/head";
 
+import { Footer } from "@/components";
+
 import "@/styles/globals.sass";
 
 const Toast = dynamic(() => import("@/components").then((mod) => mod.Toast), { ssr: false });
@@ -32,6 +34,7 @@ export default function App({ Component, pageProps }: AppProps) {
 			</Head>
 			<Toast />
 			<Component {...pageProps} />
+			<Footer />
 			<Analytics />
 		</>
 	);

@@ -5,6 +5,7 @@ export * from "./Card";
 export * from "./ColorSchemePicker";
 export * from "./Container";
 export * from "./DarkModeToggle";
+export * from "./Footer";
 export * from "./Header";
 export * from "./Logo";
 export * from "./Toast";

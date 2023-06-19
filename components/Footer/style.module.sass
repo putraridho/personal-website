@@ -1,0 +1,84 @@
+@import styles/keyframes
+
+.footer
+  position: fixed
+  left: 0
+  bottom: 0
+  width: 100%
+  
+.nav
+  height: 100px
+  display: flex
+
+  .vLine
+    &:nth-child(2)
+      animation: .3s .5s VLine ease-out, .5s Opacity ease-out
+
+    &:nth-child(4)
+      animation: .3s .7s VLine ease-out, .7s Opacity ease-out
+
+.navItem
+  display: flex
+  align-items: center
+  flex: 1
+  padding: 16px 32px
+
+.navLogo
+
+.navMenu
+  justify-content: center
+  gap: 64px
+  font-size: 13px
+
+  a:hover
+    text-decoration: underline
+    text-underline-offset: 4px
+
+.navSocials
+  align-items: center
+  justify-content: flex-end
+  gap: 32px
+
+.social
+  position: relative
+  cursor: pointer
+
+  a
+    display: flex
+
+  svg
+    position: relative
+    mix-blend-mode: difference
+
+  &::before
+    content: ''
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%) scale(0)
+    opacity: 0
+    border-radius: 50px
+    height: 32px
+    width: 32px
+    background: var(--white)
+    transition: .5s all ease
+
+  &:hover::before
+    transform: translate(-50%, -50%) scale(1)
+    opacity: 1
+
+.hLine
+  position: absolute
+  top: 0
+  left: 0
+  animation: .6s .3s HLine ease-out, .3s Opacity ease-out
+
+.vLine
+  height: 100%
+  width: 1px
+  background-color: var(--primary-border)
+
+.hLine
+  height: 1px
+  width: 100%
+  background-color: var(--primary-border)
