@@ -1,7 +1,7 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 
-import { block, blockChildren, query } from "@/data";
+import { block, blockChildren } from "@/data";
 import { IPageBlogDetail } from "@/types";
 import { Detail } from "@/ui/blogs";
 import { deserializeToReactNodes } from "@/utils";

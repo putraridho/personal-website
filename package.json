@@ -9,7 +9,8 @@
 		"lint": "next lint",
 		"format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,md}\"",
 		"prepare": "husky install",
-		"env:gen": "npx dotenv-types-generator -f ./.env.local"
+		"env:gen": "npx dotenv-types-generator -f ./.env.local",
+		"swagger:gen": "node ./swagger.js"
 	},
 	"dependencies": {
 		"@notionhq/client": "^2.2.5",
@@ -19,18 +20,17 @@
 		"@types/react": "^18.2.12",
 		"@types/react-dom": "^18.2.5",
 		"@vercel/analytics": "^1.0.1",
-		"axios": "^1.4.0",
 		"classnames": "^2.3.2",
 		"dayjs": "^1.11.8",
 		"eslint": "^8.43.0",
 		"eslint-config-next": "^13.4.6",
 		"next": "^13.4.6",
-		"next-themes": "^0.2.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-icons": "^4.9.0",
 		"react-syntax-highlighter": "^15.5.0",
-		"react-toastify": "^9.1.3"
+		"react-toastify": "^9.1.3",
+		"swagger-axios-codegen": "^0.15.11"
 	},
 	"devDependencies": {
 		"@types/react-syntax-highlighter": "^15.5.7",

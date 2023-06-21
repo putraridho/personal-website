@@ -1,10 +1,12 @@
 @import styles/keyframes
+@import styles/function
+@import styles/mixin
 
 .wrapper
   display: flex
   flex-direction: column
   height: 100vh
-  padding-bottom: 100px
+  padding-bottom: toRem(100px)
 
 .banner
   display: flex
@@ -17,7 +19,7 @@
   position: relative
   display: flex
   align-items: center
-  padding: 32px
+  padding: toRem(32px)
   flex: 2
 
   &::before
@@ -26,7 +28,7 @@
     top: 50%
     left: 50%
     transform: translate(-50%, -50%)
-    background: radial-gradient(1024px circle at var(--mouse-x) var(--mouse-y), transparentize(#182712, .1), transparent 40%)
+    background: radial-gradient(toRem(1024px) circle at var(--mouse-x) var(--mouse-y), transparentize(#182712, .1), transparent 40%)
     height: 100%
     width: 100%
     opacity: 0
@@ -50,10 +52,10 @@
   position: relative
   display: flex
   flex-direction: column
-  gap: 16px
+  gap: toRem(16px)
   opacity: 0.5
-  max-width: 500px
-  transform: translateY(4px)
+  max-width: toRem(500px)
+  transform: translateY(toRem(4px))
   transition: .3s all ease-out
   cursor: default
 
@@ -62,7 +64,7 @@
   align-items: center
   justify-content: center
   flex: 1
-  padding: 32px
+  padding: toRem(32px)
 
   img
     max-width: 100%
@@ -79,15 +81,15 @@
   flex: 1
   align-items: center
   justify-content: space-between
-  gap: 36px
-  padding: 16px 64px
+  gap: toRem(36px)
+  padding: toRem(16px) toRem(64px)
   transition: .3s all ease-out
 
   .content
     display: flex
     flex-direction: column
     flex: 1
-    gap: 16px
+    gap: toRem(16px)
 
   .headWrapper
     position: relative
@@ -95,7 +97,7 @@
 
   .head
     font:
-      size: 56px
+      size: toRem(56px)
       weight: 900
     text-transform: uppercase
 
@@ -121,17 +123,17 @@
       transform: translateY(-100%)
 
     .arrowRight
-      transform: translateX(24px)
+      transform: translateX(toRem(24px))
 
   & + .vLine
     animation: .3s .3s VLine ease-out, .3s Opacity ease-out
 
 .vLine
   height: 100%
-  width: 1px
+  width: toRem(1px)
   background-color: var(--primary-border)
 
 .hLine
-  height: 1px
+  height: toRem(1px)
   width: 100%
   background-color: var(--primary-border)

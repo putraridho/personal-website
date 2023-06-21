@@ -1,13 +1,16 @@
 @import styles/keyframes
+@import styles/function
+@import styles/mixin
 
 .footer
   position: fixed
   left: 0
   bottom: 0
   width: 100%
+  backdrop-filter: blur(toRem(12px))
   
 .nav
-  height: 100px
+  height: toRem(100px)
   display: flex
 
   .vLine
@@ -21,23 +24,23 @@
   display: flex
   align-items: center
   flex: 1
-  padding: 16px 32px
+  padding: toRem(16px) toRem(32px)
 
 .navLogo
 
 .navMenu
   justify-content: center
-  gap: 64px
-  font-size: 13px
+  gap: toRem(64px)
+  font-size: toRem(13px)
 
   a:hover
     text-decoration: underline
-    text-underline-offset: 4px
+    text-underline-offset: toRem(4px)
 
 .navSocials
   align-items: center
   justify-content: flex-end
-  gap: 32px
+  gap: toRem(32px)
 
 .social
   position: relative
@@ -57,9 +60,9 @@
     left: 50%
     transform: translate(-50%, -50%) scale(0)
     opacity: 0
-    border-radius: 50px
-    height: 32px
-    width: 32px
+    border-radius: toRem(50px)
+    height: toRem(32px)
+    width: toRem(32px)
     background: var(--white)
     transition: .5s all ease
 
@@ -75,10 +78,10 @@
 
 .vLine
   height: 100%
-  width: 1px
+  width: toRem(1px)
   background-color: var(--primary-border)
 
 .hLine
-  height: 1px
+  height: toRem(1px)
   width: 100%
   background-color: var(--primary-border)

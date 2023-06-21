@@ -1,30 +1,24 @@
 import { GetStaticProps } from "next";
 
-import { Container } from "@/components";
-import { query } from "@/data";
+import { DatabasesService } from "@/service";
 import { IPageBlog } from "@/types";
-import { Hero, List } from "@/ui/blogs";
+import { NewBlogs } from "@/ui/new-blogs";
+import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
 export default function Blog({ items }: IPageBlog) {
-	return (
-		<main>
-			<Container>
-				<Hero />
-				<List items={items} />
-			</Container>
-		</main>
-	);
+	return <NewBlogs items={items} />;
 }
 
 export const getStaticProps: GetStaticProps<IPageBlog> = async () => {
 	try {
-		const res = await query();
+		const res = await DatabasesService.databasesControllerQuery();
+
 		if (res.success) {
 			return {
 				props: {
 					has_more: res.has_more,
 					next_cursor: res.next_cursor,
-					items: res.results,
+					items: res.results as PageObjectResponse[],
 				},
 			};
 		}
