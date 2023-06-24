@@ -1,10 +1,122 @@
 import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-import React from "react";
+import React, { CSSProperties } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 
 import { COLOR_TABLE } from "@/constants";
 
 import { deserializeRichText } from "./deserializeRichText";
+
+const codeStyle: Record<string, CSSProperties> = {
+	hljs: {
+		display: "block",
+		overflowX: "auto",
+		padding: "0.5em",
+		color: "#F2FFF2",
+		background: "#121A0A",
+	},
+	"hljs-comment": {
+		color: "#999999",
+	},
+	"hljs-keyword": {
+		color: "#07BC0C",
+	},
+	"hljs-selector-tag": {
+		color: "#07BC0C",
+	},
+	"hljs-meta-keyword": {
+		color: "#07BC0C",
+	},
+	"hljs-doctag": {
+		color: "#07BC0C",
+	},
+	"hljs-section": {
+		color: "#07BC0C",
+	},
+	"hljs-selector-class": {
+		color: "#07BC0C",
+	},
+	"hljs-meta": {
+		color: "#07BC0C",
+	},
+	"hljs-selector-pseudo": {
+		color: "#07BC0C",
+	},
+	"hljs-attr": {
+		color: "#07BC0C",
+	},
+	"hljs-attribute": {
+		color: "v#c59bc1",
+	},
+	"hljs-name": {
+		color: "#CDE308",
+	},
+	"hljs-type": {
+		color: "#CDE308",
+	},
+	"hljs-number": {
+		color: "#CDE308",
+	},
+	"hljs-selector-id": {
+		color: "#CDE308",
+	},
+	"hljs-quote": {
+		color: "#CDE308",
+	},
+	"hljs-template-tag": {
+		color: "#CDE308",
+	},
+	"hljs-built_in": {
+		color: "#CDE308",
+	},
+	"hljs-title": {
+		color: "#CDE308",
+	},
+	"hljs-literal": {
+		color: "#CDE308",
+	},
+	"hljs-string": {
+		color: "#b5bd68",
+	},
+	"hljs-regexp": {
+		color: "#b5bd68",
+	},
+	"hljs-symbol": {
+		color: "#b5bd68",
+	},
+	"hljs-variable": {
+		color: "#b5bd68",
+	},
+	"hljs-template-variable": {
+		color: "#b5bd68",
+	},
+	"hljs-link": {
+		color: "#b5bd68",
+	},
+	"hljs-selector-attr": {
+		color: "#b5bd68",
+	},
+	"hljs-meta-string": {
+		color: "#b5bd68",
+	},
+	"hljs-bullet": {
+		color: "#cccccc",
+	},
+	"hljs-code": {
+		color: "#cccccc",
+	},
+	"hljs-deletion": {
+		color: "#de7176",
+	},
+	"hljs-addition": {
+		color: "#76c490",
+	},
+	"hljs-emphasis": {
+		fontStyle: "italic",
+	},
+	"hljs-strong": {
+		fontWeight: "bold",
+	},
+};
 
 export function setColor(color: string): React.HTMLAttributes<{}> {
 	if (color === "default") {
@@ -149,7 +261,9 @@ export function deserializeToReactNodes(blocks: BlockObjectResponse[]): React.Re
 
 				nodes.push(
 					<div className="highlight" key={block.id}>
-						<SyntaxHighlighter language={code.language}>{codeString}</SyntaxHighlighter>
+						<SyntaxHighlighter language={code.language} style={codeStyle}>
+							{codeString}
+						</SyntaxHighlighter>
 					</div>,
 				);
 				break;

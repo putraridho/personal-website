@@ -1,13 +1,14 @@
+import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import dayjs from "dayjs";
 import timezone from "dayjs/plugin/timezone";
 import utc from "dayjs/plugin/utc";
+import Link from "next/link";
 import { MouseEventHandler, useCallback, useRef } from "react";
 
+import { Container } from "@/components";
+import { TZ } from "@/constants";
 import { LayersIcon } from "@/icons";
 
-import { TZ } from "@/constants";
-import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-import Link from "next/link";
 import style from "./style.module.sass";
 
 dayjs.extend(utc);
@@ -36,7 +37,7 @@ export function NewBlogs({ items }: NewBlogsProps): React.ReactElement {
 
 	return (
 		<section ref={sectionRef} className={style.blogs} onMouseMove={handleMouseMove}>
-			<div className={style.container}>
+			<Container>
 				<h1 className={style.heading}>
 					Blogs <LayersIcon />
 				</h1>
@@ -66,7 +67,7 @@ export function NewBlogs({ items }: NewBlogsProps): React.ReactElement {
 						);
 					})}
 				</div>
-			</div>
+			</Container>
 		</section>
 	);
 }

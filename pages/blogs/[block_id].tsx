@@ -3,7 +3,7 @@ import Head from "next/head";
 
 import { block, blockChildren } from "@/data";
 import { IPageBlogDetail } from "@/types";
-import { Detail } from "@/ui/blogs";
+import { NewBlogDetail } from "@/ui/new-blog-detail";
 import { deserializeToReactNodes } from "@/utils";
 
 export default function BlogsDetail({ title, created_time, description, tags, blocks }: IPageBlogDetail) {
@@ -20,9 +20,9 @@ export default function BlogsDetail({ title, created_time, description, tags, bl
 				<meta name="keywords" content={tags.join(", ")} />
 				<meta name="author" content="Muhammad Ridho Putra" />
 			</Head>
-			<Detail title={title} created_time={created_time}>
+			<NewBlogDetail title={title} created_time={created_time}>
 				{deserializeToReactNodes(blocks)}
-			</Detail>
+			</NewBlogDetail>
 		</>
 	);
 }

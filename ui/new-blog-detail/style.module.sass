@@ -1,42 +1,10 @@
 @import styles/function
 @import styles/mixin
 
-.detail
-  padding:
-    top: toRem(128px)
-    bottom: toRem(100px)
-
-.wrapper
-  display: flex
-  flex-direction: column
-  gap: toRem(64px)
-  max-width: toRem(768px)
-  margin: auto
-
-.head
-  display: flex
-  flex-direction: column
-  gap: toRem(16px)
-
-.title
-  font:
-    size: toRem(24px)
-    weight: 700
-  line-height: toRem(28px)
-  color: var(--accent-500)
-
-  +desktop
-    font-size: toRem(36px)
-  line-height: toRem(40px)
-
-.createdTime
+.children
   font:
     size: toRem(14px)
-    weight: 600
-  line-height: toRem(24px)
-  color: var(--grey-200)
 
-.children
   *:not(:last-child):not(li)
     margin-bottom: .875em
     border-radius: toRem(4px)
