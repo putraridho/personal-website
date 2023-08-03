@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 
+import { Footer } from "@/components";
 import { block, blockChildren } from "@/data";
 import { IPageBlogDetail } from "@/types";
 import { NewBlogDetail } from "@/ui/new-blog-detail";
@@ -23,6 +24,7 @@ export default function BlogsDetail({ title, created_time, description, tags, bl
 			<NewBlogDetail title={title} created_time={created_time}>
 				{deserializeToReactNodes(blocks)}
 			</NewBlogDetail>
+			<Footer />
 		</>
 	);
 }

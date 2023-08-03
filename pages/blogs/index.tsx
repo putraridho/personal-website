@@ -1,12 +1,18 @@
 import { GetStaticProps } from "next";
 
+import { Footer } from "@/components";
 import { DatabasesService } from "@/service";
 import { IPageBlog } from "@/types";
 import { NewBlogs } from "@/ui/new-blogs";
 import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
 export default function Blog({ items }: IPageBlog) {
-	return <NewBlogs items={items} />;
+	return (
+		<>
+			<NewBlogs items={items} />
+			<Footer />
+		</>
+	);
 }
 
 export const getStaticProps: GetStaticProps<IPageBlog> = async () => {

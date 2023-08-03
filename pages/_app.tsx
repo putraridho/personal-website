@@ -40,7 +40,6 @@ export default function App({ Component, pageProps }: AppProps) {
 				<meta name="author" content="Muhammad Ridho Putra" />
 			</Head>
 			<Component {...pageProps} />
-			<Footer />
 			<Analytics />
 			<Toast />
 		</>

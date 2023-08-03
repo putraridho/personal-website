@@ -1,5 +1,6 @@
 @import ./function
 @import ./keyframes
+@import ./mixin
 
 :root
   --primary: #0A0F05
@@ -18,9 +19,12 @@
 body
   margin: 0
   font-size: 20px
-  line-height: #{16 / 14 * 1}
+  line-height: #{30 / 20 * 1}
   color: var(--white)
   background-color: var(--primary)
+
+  +desktop
+    line-height: #{16 / 14 * 1}
 
 h1, h2, h3, h4, h5, h6, p, span
   margin: 0

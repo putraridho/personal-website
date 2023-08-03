@@ -5,13 +5,31 @@
 .footer
   position: fixed
   left: 0
-  bottom: 0
+  top: 0
   width: 100%
   backdrop-filter: blur(toRem(12px))
+
+  +desktop
+    top: auto
+    bottom: 0
+    background: none
   
 .nav
-  height: toRem(100px)
   display: flex
+  flex-direction: column
+  height: toRem(62px)
+  overflow: hidden
+  gap: toRem(64px)
+
+  &.active
+    height: 100vh
+    background: #121A0A
+    transition: .2s background ease-out
+
+  +desktop
+    flex-direction: row
+    height: toRem(100px)
+    gap: toRem(0px)
 
   .vLine
     &:nth-child(2)
@@ -23,15 +41,44 @@
 .navItem
   display: flex
   align-items: center
-  flex: 1
   padding: toRem(16px) toRem(32px)
 
+  +desktop
+    flex: 1
+
 .navLogo
+  padding: toRem(16px)
+  height: toRem(62px)
+
+  img
+    width: toRem(30px)
+    height: auto
+
+  +desktop
+    padding: toRem(16px) toRem(32px)
+    height: auto
+
+    img
+      width: toRem(32px)
 
 .navMenu
   justify-content: center
-  gap: toRem(64px)
-  font-size: toRem(13px)
+  gap: toRem(32px)
+  font:
+    size: toRem(18px)
+    weight: 300
+  flex-direction: column
+  align-items: flex-end
+  padding: toRem(0px) toRem(32px)
+
+  +desktop
+    gap: toRem(64px)
+    font:
+      size: toRem(13px)
+      weight: inherit
+    flex-direction: row
+    align-items: center
+    padding: toRem(16px) toRem(32px)
 
   a:hover
     text-decoration: underline
@@ -77,11 +124,63 @@
   animation: .6s .3s HLine ease-out, .3s Opacity ease-out
 
 .vLine
+  display: none
   height: 100%
   width: toRem(1px)
   background-color: var(--primary-border)
 
+  +desktop
+    display: block
+
 .hLine
+  display: none
   height: toRem(1px)
   width: 100%
   background-color: var(--primary-border)
+
+  +desktop
+    display: block
+
+.mobileToggle
+  position: absolute
+  top: toRem(18px)
+  right: toRem(16px)
+  width: toRem(24px)
+  height: toRem(24px)
+  background: none
+  border: toRem(0px)
+
+  +desktop
+    display: none
+
+  .line
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: toRem(14px)
+    height: 1px
+    background: var(--white)
+    transition: .2s all ease-out
+
+    &:nth-child(1)
+      top: calc(50% - 4px)
+
+    &:nth-child(3)
+      top: calc(50% + 4px)
+
+
+  &.active
+    .line
+      width: toRem(16px)
+
+      &:nth-child(1)
+        top: 50%
+        transform: translate(-50%, -50%) rotate(-45deg)
+
+      &:nth-child(2)
+        opacity: 0
+
+      &:nth-child(3)
+        top: 50%
+        transform: translate(-50%, -50%) rotate(45deg)

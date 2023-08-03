@@ -2,11 +2,11 @@ import { EnvelopeClosedIcon, GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
-import { AnchorHTMLAttributes, PropsWithChildren } from "react";
+import { AnchorHTMLAttributes, PropsWithChildren, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import style from "./style.module.sass";
 import { Tooltip } from "../Tooltip";
+import style from "./style.module.sass";
 
 const copyToClipboard = (text: string) => {
 	if (navigator.clipboard) {
@@ -22,10 +22,24 @@ const copyToClipboard = (text: string) => {
 };
 
 export function Footer(): React.ReactElement {
+	const [isOpen, setIsOpen] = useState(false);
+
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			const handleResize = () => {
+				if (window.innerWidth >= 1200) {
+					setIsOpen(false);
+				}
+			};
+			window.addEventListener("resize", handleResize);
+			return () => window.removeEventListener("resize", handleResize);
+		}
+	}, []);
+
 	return (
 		<footer className={style.footer}>
 			<HLine />
-			<nav className={style.nav}>
+			<nav className={classNames(style.nav, { [style.active]: isOpen })}>
 				<div className={classNames(style.navItem, style.navLogo)}>
 					<Link href="/">
 						<Image src="/logo.svg" alt="logo" height={32} width={32} />
@@ -79,6 +93,15 @@ export function Footer(): React.ReactElement {
 						<LinkedInLogoIcon height={20} width={20} />
 					</Social>
 				</div>
+				<button
+					type="button"
+					className={classNames(style.mobileToggle, { [style.active]: isOpen })}
+					onClick={() => setIsOpen((curr) => !curr)}
+				>
+					<div className={style.line} />
+					<div className={style.line} />
+					<div className={style.line} />
+				</button>
 			</nav>
 		</footer>
 	);

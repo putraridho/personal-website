@@ -5,12 +5,26 @@
 .wrapper
   display: flex
   flex-direction: column
-  height: 100vh
-  padding-bottom: toRem(100px)
+  gap: toRem(64px)
+  padding:
+    top: toRem(124px)
+
+  +desktop
+    height: 100vh
+    gap: toRem(0px)
+    padding:
+      top: toRem(0px)
+      bottom: toRem(100px)
 
 .banner
   display: flex
   flex: 2
+  flex-direction: column
+  gap: toRem(64px)
+
+  +desktop
+    flex-direction: row
+    gap: toRem(0px)
 
   & + .hLine
     animation: .6s HLine ease-out
@@ -21,6 +35,7 @@
   align-items: center
   padding: toRem(32px)
   flex: 2
+  order: 1
 
   &::before
     content: ''
@@ -64,14 +79,24 @@
   align-items: center
   justify-content: center
   flex: 1
-  padding: toRem(32px)
+  margin: auto
+  padding: toRem(0px)
+  order: 0
+
+  +desktop
+    padding: toRem(32px)
+    order: 1
 
   img
     max-width: 100%
 
 .collection
   display: flex
+  flex-direction: column
   flex: 1
+
+  +desktop
+    flex-direction: row
 
   & + .hLine
     animation: .6s .3s HLine ease-out, .3s Opacity ease-out
@@ -81,9 +106,15 @@
   flex: 1
   align-items: center
   justify-content: space-between
-  gap: toRem(36px)
-  padding: toRem(16px) toRem(64px)
+  gap: toRem(24px)
   transition: .3s all ease-out
+  padding: toRem(32px)
+  border-top: 1px solid #182712
+
+  +desktop
+    padding: toRem(16px) toRem(64px)
+    gap: toRem(36px)
+    border-top: 0px
 
   .content
     display: flex
@@ -97,15 +128,32 @@
 
   .head
     font:
-      size: toRem(56px)
+      size: toRem(32px)
       weight: 900
+    line-height: toRem(38px)
     text-transform: uppercase
+
+    +desktop
+      line-height: toRem(75px)
+      font-size: toRem(56px)
 
     &::after
       content: ''
       position: absolute
       left: 0
       top: 100%
+
+  .description
+    line-height: normal
+
+    +desktop
+      line-height: inherit
+
+  .arrowRight
+    width: toRem(64px)
+
+    +desktop
+      width: toRem(108px)
 
   &:nth-child(1)
     .head::after
@@ -129,11 +177,19 @@
     animation: .3s .3s VLine ease-out, .3s Opacity ease-out
 
 .vLine
+  display: none
   height: 100%
   width: toRem(1px)
   background-color: var(--primary-border)
 
+  +desktop
+    display: block
+
 .hLine
+  display: none
   height: toRem(1px)
   width: 100%
   background-color: var(--primary-border)
+
+  +desktop
+    display: block
