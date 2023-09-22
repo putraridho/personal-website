@@ -6,7 +6,7 @@ import { IPageBlogDetail } from "@/types";
 import { CalendarIcon } from "@radix-ui/react-icons";
 import style from "./style.module.sass";
 
-export function NewBlogDetail({
+export function BlogDetail({
 	children,
 	title,
 	created_time,

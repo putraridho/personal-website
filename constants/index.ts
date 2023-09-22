@@ -1,4 +1,3 @@
-import { Client } from "@notionhq/client";
 import Axios from "axios";
 
 export const HOST = "https://api.mrputraridho.com";

@@ -3,13 +3,13 @@ import { GetStaticProps } from "next";
 import { Footer } from "@/components";
 import { DatabasesService } from "@/service";
 import { IPageBlog } from "@/types";
-import { NewBlogs } from "@/ui/new-blogs";
+import { Blogs } from "@/ui/blogs";
 import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
-export default function Blog({ items }: IPageBlog) {
+export default function BlogsPage({ items }: IPageBlog) {
 	return (
 		<>
-			<NewBlogs items={items} />
+			<Blogs items={items} />
 			<Footer />
 		</>
 	);

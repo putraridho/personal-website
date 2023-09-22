@@ -1,5 +1,5 @@
-import { axios, HOST } from "@/constants";
-import { ISearchResponse, IRetrieveResponse, IQueryResponse, IBlocksChildrenResponse, IBlocksResponse } from "@/types";
+import { axios } from "@/constants";
+import { IBlocksChildrenResponse, IBlocksResponse, IQueryResponse, IRetrieveResponse, ISearchResponse } from "@/types";
 
 export const search = async () => {
 	const res = await axios<ISearchResponse>("/search");

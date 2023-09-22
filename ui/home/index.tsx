@@ -6,7 +6,7 @@ import { ArrowRightIcon, MagicWandIcon } from "@/icons";
 
 import style from "./style.module.sass";
 
-export function NewHome(): React.ReactElement {
+export function Home(): React.ReactElement {
 	const bannerContentRef = useRef<HTMLDivElement>(null);
 
 	const handleMouseMove = useCallback<MouseEventHandler<HTMLDivElement>>(

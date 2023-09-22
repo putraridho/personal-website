@@ -1,10 +1,10 @@
 import { Footer } from "@/components";
-import { NewHome } from "@/ui/new-home";
+import { Home } from "@/ui/home";
 
-export default function Home() {
+export default function HomePage() {
 	return (
 		<>
-			<NewHome />
+			<Home />
 			<Footer />
 		</>
 	);
