@@ -38,7 +38,7 @@ export function Blogs({ items }: NewBlogsProps): React.ReactElement {
 		<section ref={sectionRef} className={style.blogs} onMouseMove={handleMouseMove}>
 			<Container>
 				<h1 className={style.heading}>
-					Blogs <LayersIcon />
+					Blogs <LayersIcon className={style.layers} />
 				</h1>
 				<div className={style.blogItems}>
 					{items.map((item) => (

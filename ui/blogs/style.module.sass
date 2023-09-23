@@ -5,13 +5,16 @@
   --mouse-x: 0
   --mouse-y: 0
 
-  padding: toRem(64px) 0 toRem(116px)
+  padding: toRem(62px) 0
   min-height: 100vh
   background:
     image: radial-gradient(transparentize(#f2fff2, .92) 12%, transparent 12%)
     size: toRem(32px) toRem(32px)
     position: var(--mouse-x) var(--mouse-y)
   transition: .3s all ease-out
+
+  +desktop
+    padding: toRem(64px) 0 toRem(116px)
   
 .container
   max-width: toRem(976px)
@@ -20,13 +23,25 @@
 
 .heading
   display: flex
-  gap: toRem(64px)
+  gap: toRem(24px)
   align-items: center
   font:
-    size: toRem(64px)
+    size: toRem(32px)
     weight: 900
   text-transform: uppercase
   margin-bottom: toRem(40px)
+
+  +desktop
+    gap: toRem(64px)
+    font-size: toRem(64px)
+
+.layers
+  width: toRem(64px)
+  height: toRem(64px)
+
+  +desktop
+    width: toRem(80px)
+    height: toRem(80px)
 
 .blogItems
   display: grid
