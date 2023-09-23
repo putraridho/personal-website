@@ -2,13 +2,12 @@ import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import dayjs from "dayjs";
 import timezone from "dayjs/plugin/timezone";
 import utc from "dayjs/plugin/utc";
-import Link from "next/link";
 import { MouseEventHandler, useCallback, useRef } from "react";
 
 import { Container } from "@/components";
-import { TZ } from "@/constants";
 import { LayersIcon } from "@/icons";
 
+import { BlogItem } from "./BlogItem";
 import style from "./style.module.sass";
 
 dayjs.extend(utc);
@@ -42,31 +41,9 @@ export function Blogs({ items }: NewBlogsProps): React.ReactElement {
 					Blogs <LayersIcon />
 				</h1>
 				<div className={style.blogItems}>
-					{items.map((item) => {
-						const tags = item.properties["Tags"].type === "multi_select" ? item.properties["Tags"].multi_select : [];
-						const title =
-							item.properties["Title"].type === "title" ? item.properties["Title"].title?.[0]?.plain_text : "Untitled";
-						const description =
-							item.properties["Description"].type === "rich_text"
-								? item.properties["Description"].rich_text?.[0]?.plain_text
-								: "";
-						return (
-							<Link href={`/blogs/${item.id}`} title={title} key={item.id} className={style.blogItem}>
-								<div className={style.blogTags}>
-									{tags.map(({ id, name }) => (
-										<span key={id} className={style.blogTag}>
-											{name}
-										</span>
-									))}
-								</div>
-								<h2 className={style.blogTitle}>{title}</h2>
-								<p className={style.blogCreatedTime}>
-									{dayjs(item.created_time).tz(TZ).format("MMMM DD, YYYY hh:mm A")}
-								</p>
-								<p className={style.blogDescription}>{description}</p>
-							</Link>
-						);
-					})}
+					{items.map((item) => (
+						<BlogItem key={item.id} item={item} />
+					))}
 				</div>
 			</Container>
 		</section>
