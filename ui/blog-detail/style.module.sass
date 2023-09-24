@@ -1,6 +1,39 @@
 @import styles/function
 @import styles/mixin
 
+.blog
+  padding:
+    top: toRem(94px)
+
+.title
+  font:
+    size: toRem(30px)
+    weight: 900
+  line-height: toRem(36px)
+  margin-bottom: toRem(16px)
+
+  +desktop
+    font-size: toRem(48px)
+    line-height: 1
+
+.createdTime
+  display: flex
+  gap: toRem(6px)
+  align-items: center
+  font-size: toRem(14px)
+  margin-bottom: toRem(36px)
+
+  svg
+    height: toRem(16px)
+    width: toRem(16px)
+
+  +desktop
+    font-size: toRem(12px)
+
+    svg
+      height: toRem(14px)
+      width: toRem(14px)
+
 .children
   font:
     size: toRem(14px)

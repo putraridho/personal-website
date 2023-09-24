@@ -5,7 +5,6 @@ import dynamic from "next/dynamic";
 import { Work_Sans } from "next/font/google";
 import Head from "next/head";
 
-import { Footer } from "@/components";
 import { serviceOptions } from "@/service";
 
 import "@/styles/globals.sass";
