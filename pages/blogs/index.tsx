@@ -26,6 +26,7 @@ export const getStaticProps: GetStaticProps<IPageBlog> = async () => {
 					next_cursor: res.next_cursor,
 					items: res.results as PageObjectResponse[],
 				},
+				revalidate: 60 * 60, // Revalidate every 1 hour
 			};
 		}
 	} catch (err) {
@@ -35,6 +36,7 @@ export const getStaticProps: GetStaticProps<IPageBlog> = async () => {
 				next_cursor: null,
 				items: [],
 			},
+			revalidate: 60 * 60, // Revalidate every 1 hour
 		};
 	}
 
@@ -44,5 +46,6 @@ export const getStaticProps: GetStaticProps<IPageBlog> = async () => {
 			next_cursor: null,
 			items: [],
 		},
+		revalidate: 60 * 60, // Revalidate every 1 hour
 	};
 };

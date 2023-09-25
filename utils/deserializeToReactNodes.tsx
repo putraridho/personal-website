@@ -11,8 +11,8 @@ const codeStyle: Record<string, CSSProperties> = {
 		display: "block",
 		overflowX: "auto",
 		padding: "0.5em",
-		color: "#F2FFF2",
-		background: "#121A0A",
+		color: "var(--white)",
+		background: "var(--primary-soft)",
 	},
 	"hljs-comment": {
 		color: "#999999",

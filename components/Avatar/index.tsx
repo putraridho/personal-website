@@ -68,7 +68,7 @@ export function Avatar() {
 				/>
 				<path
 					d="M186.312 227.922C186.312 227.922 190.704 252.549 188.979 266.98"
-					stroke="#F2FFF2"
+					stroke="var(--white)"
 					strokeWidth="5.1257"
 					strokeMiterlimit="10"
 					strokeLinecap="round"

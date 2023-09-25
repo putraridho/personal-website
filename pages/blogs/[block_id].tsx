@@ -1,13 +1,21 @@
-import { GetServerSideProps } from "next";
+import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 
 import { Footer } from "@/components";
 import { block, blockChildren } from "@/data";
+import { DatabasesService } from "@/service";
 import { IPageBlogDetail } from "@/types";
 import { BlogDetail } from "@/ui/blog-detail";
 import { deserializeToReactNodes } from "@/utils";
 
-export default function BlogDetailPage({ title, created_time, description, tags, blocks }: IPageBlogDetail) {
+export default function BlogDetailPage({
+	title = "",
+	created_time = "",
+	description = "",
+	tags = [],
+	blocks = [],
+}: IPageBlogDetail) {
 	return (
 		<>
 			<Head>
@@ -29,7 +37,7 @@ export default function BlogDetailPage({ title, created_time, description, tags,
 	);
 }
 
-export const getServerSideProps: GetServerSideProps<IPageBlogDetail> = async (req) => {
+export const getStaticProps: GetStaticProps<IPageBlogDetail> = async (req) => {
 	const block_id = String(req.params?.block_id);
 	try {
 		const block_children_res = await blockChildren(block_id);
@@ -46,6 +54,7 @@ export const getServerSideProps: GetServerSideProps<IPageBlogDetail> = async (re
 					next_cursor: block_children_res.next_cursor,
 					blocks: block_children_res.blocks,
 				},
+				revalidate: 60 * 60, // Revalidate every 1 hour
 			};
 		}
 	} catch (err) {
@@ -74,5 +83,31 @@ export const getServerSideProps: GetServerSideProps<IPageBlogDetail> = async (re
 			blocks: [],
 		},
 		notFound: true,
+	};
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+	try {
+		const res = await DatabasesService.databasesControllerQuery();
+
+		if (res.success) {
+			return {
+				paths: (res.results as PageObjectResponse[]).map((page) => ({
+					params: {
+						block_id: page.id,
+					},
+				})),
+				fallback: "blocking",
+			};
+		}
+	} catch (err) {
+		return {
+			paths: [],
+			fallback: "blocking",
+		};
+	}
+	return {
+		paths: [],
+		fallback: "blocking",
 	};
 };

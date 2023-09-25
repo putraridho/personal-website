@@ -4,6 +4,12 @@
 .blog
   padding:
     top: toRem(94px)
+    bottom: toRem(64px)
+
+  +desktop
+    padding:
+      top: toRem(94px)
+      bottom: toRem(116px)
 
 .title
   font:
@@ -85,11 +91,14 @@
       font-size: toRem(14px)
 
   code
-    padding: toRem(2px) toRem(10px)
-    background-color: var(--grey-300)
-    color: var(--white)
+    padding: toRem(2px) toRem(6px)
+    margin: auto toRem(4px)
+    background-color: var(--neutral-200)
+    color: var(--neutral-400)
     border-radius: toRem(4px)
-    font-size: toRem(14px)
+    font:
+      size: toRem(14px)
+      weight: 600
 
     +desktop
       font-size: toRem(12px)

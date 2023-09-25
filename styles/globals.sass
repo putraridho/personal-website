@@ -2,8 +2,22 @@
 @import ./keyframes
 @import ./mixin
 
+$neutral-colors: (0: #f2fff2, 100: #d0d7d0, 200: #91ab91, 300: #587855, 400: #264324, 500: #0a0f05)
+
 :root
+  @each $value, $hex in $neutral-colors
+    --neutral-#{$value}: #{$hex}
+  --notion-blue: #337EA9
+  --notion-brown: #9F6B53
+  --notion-gray: #787774
+  --notion-green: #448361
+  --notion-orange: #D9730D
+  --notion-pink: #C14C8A
+  --notion-purple: #9065B0
+  --notion-red: #D44C47
+  --notion-yellow: #CB912F
   --primary: #0A0F05
+  --primary-soft: #121A0A
   --primary-border: #17210D
   --white: #F2FFF2
   --mouse-x: 0

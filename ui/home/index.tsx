@@ -13,11 +13,11 @@ export function Home(): React.ReactElement {
 		(e) => {
 			bannerContentRef?.current?.style.setProperty(
 				"--mouse-x",
-				(e.pageX || 0 - bannerContentRef?.current?.clientLeft || 0) + "px",
+				((e.pageX || 0) - bannerContentRef?.current?.offsetLeft || 0) + "px",
 			);
 			bannerContentRef?.current?.style.setProperty(
 				"--mouse-y",
-				(e.pageY || 0 - bannerContentRef?.current?.clientTop || 0) + "px",
+				(e.pageY || 0) - (bannerContentRef?.current?.offsetTop || 0) + "px",
 			);
 		},
 		[bannerContentRef],
